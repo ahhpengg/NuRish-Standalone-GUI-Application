@@ -21,6 +21,7 @@ lazy val root = (project in file("."))
     },
     libraryDependencies ++= Seq("org.scalafx" %% "scalafx" % "21.0.0-R32",
       "org.scalikejdbc" %% "scalikejdbc"       % "4.3.0",
+      "ch.qos.logback" % "logback-classic" % "1.2.10",
       "com.h2database"  %  "h2"                % "2.2.224",
       "org.apache.derby" % "derby" % "10.17.1.0",
       "org.apache.derby" % "derbytools" % "10.17.1.0"
