@@ -9,6 +9,8 @@ import javafx.stage.Stage
 import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
 import javafx.scene.layout.AnchorPane
+import nurishapp.util.AuthenticationUtil
+import scala.util.{Success, Failure}
 
 class LoginController {
   @FXML private var loginPane: AnchorPane = _
@@ -37,9 +39,21 @@ class LoginController {
       return
     }
 
-    val success = AuthenticationController.login(username, password)
-    messageLabel.setText(if (success) "Login successful!" else "Invalid Username/Password!")
+    AuthenticationUtil.login(username, password) match {
+      case Success(true) =>
+        messageLabel.setText("Login successful!")
+      // Add your navigation logic here
+
+      case Success(false) =>
+        messageLabel.setText("Invalid Username/Password!")
+        passwordField.setText("") // Clear password field for security
+
+      case Failure(exception) =>
+        messageLabel.setText("Login error: " + exception.getMessage)
+        println(s"Login error: ${exception.getMessage}") // For debugging
+    }
   }
+
 
   @FXML
   private def handleSignUp(): Unit = {
