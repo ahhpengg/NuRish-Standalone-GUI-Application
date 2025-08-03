@@ -24,6 +24,7 @@ class LoginController {
 
   private var stage: Stage = _
 
+  // handles application-specific initialization setup
   def initStage(stage: Stage): Unit = {
     this.stage = stage
 
@@ -32,20 +33,15 @@ class LoginController {
       val scene = new Scene(loginPane)
       stage.setScene(scene)
     }
-
-    // Make the scene resize with the window
-    imageContainer.prefWidthProperty().bind(stage.getScene.widthProperty())
-    imageContainer.prefHeightProperty().bind(stage.getScene.heightProperty())
   }
 
-
+  // handles FXML component setup
   @FXML
   private def initialize(): Unit = {
-    // Set up the login button action
-    loginButton.setOnAction(_ => handleLogin())
 
-    // Initial setup of the message label (hidden until needed)
-    messageLabel.setText("")
+    // Make the scene resize with the window
+    imageContainer.prefWidthProperty().bind(loginPane.widthProperty())
+    imageContainer.prefHeightProperty().bind(loginPane.heightProperty())
 
     // Load the image
     val imageUrl = getClass.getResource("/images/nurish_login.png")
@@ -57,6 +53,7 @@ class LoginController {
     loginPane.setDividerPositions(0.7)
   }
 
+  @FXML
   private def handleLogin(): Unit = {
     val username = usernameField.getText
     val password = passwordField.getText

@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<SplitPane fx:id="loginPane" dividerPositions="0.7" minHeight="-Infinity" minWidth="-Infinity" mouseTransparent="true" prefHeight="518.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.LoginController">
+<SplitPane fx:id="loginPane" dividerPositions="0.7" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.LoginController">
       <items>
           <AnchorPane fx:id="imageContainer" minHeight="0.0" minWidth="0.0" prefHeight="518.0" prefWidth="518.0">
               <children>
@@ -39,8 +39,11 @@
                           </Label>
                           <TextField fx:id="usernameField" maxWidth="250" promptText="Username" />
                           <PasswordField fx:id="passwordField" maxWidth="250" promptText="Password" />
-                          <Label fx:id="messageLabel" textFill="red" />
-                          <Button fx:id="loginButton" text="Login" />
+                          <Label fx:id="messageLabel" textFill="red">
+                     <font>
+                        <Font size="10.0" />
+                     </font></Label>
+                          <Button fx:id="loginButton" onAction="#handleLogin" text="Login" />
                           <Label text="--- or ---" textFill="#462323">
                               <font>
                                   <Font name="System Bold" size="12.0" />
