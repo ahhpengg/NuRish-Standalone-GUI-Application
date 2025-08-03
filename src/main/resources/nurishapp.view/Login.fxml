@@ -13,51 +13,48 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane fx:id="loginPane" prefHeight="300" prefWidth="400" style="-fx-background-color: white;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="nurishapp.view.LoginController">
-
-    <children>
-      <SplitPane dividerPositions="0.29797979797979796" prefHeight="300.0" prefWidth="448.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-48.0" AnchorPane.topAnchor="0.0">
-        <items>
-            <AnchorPane prefHeight="298.0" prefWidth="196.0">
-               <children>
-                  <ImageView fitHeight="298.0" fitWidth="224.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="260.0">
-               <children>
-                    <VBox alignment="CENTER" spacing="10" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
-                        <children>
-            
-                                  <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="NuRish" textAlignment="CENTER">
-                           <font>
-                              <Font name="Brush Script MT Italic" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label text="Welcome to NuRish" />
-            
-                                  <TextField fx:id="usernameField" maxWidth="250" promptText="Username" />
-            
-                                  <PasswordField fx:id="passwordField" maxWidth="250" promptText="Password" />
-            
-                                  <Label fx:id="messageLabel" textFill="red" />
-                              <Button fx:id="loginButton" text="Login" />
-                        <Label text="--- or ---" />
-                        <TextFlow prefHeight="0.0" prefWidth="136.0">
-                           <children>
-                              <Label text="New to NuRish?" />
-                              <Hyperlink fx:id="signupLink" onAction="#handleSignUp" text="Sign Up" underline="true" />
-                           </children>
-                        </TextFlow>
-            
+<SplitPane fx:id="loginPane" dividerPositions="0.7" minHeight="-Infinity" minWidth="-Infinity" mouseTransparent="true" prefHeight="518.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.LoginController">
+      <items>
+          <AnchorPane fx:id="imageContainer" minHeight="0.0" minWidth="0.0" prefHeight="518.0" prefWidth="518.0">
+              <children>
+                  <ImageView fx:id="loginImage" cache="true" fitHeight="518.0" fitWidth="518.0" />
+              </children>
+          </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="518.0" prefWidth="222.0">
+              <children>
+                  <VBox alignment="CENTER" layoutX="20.0" layoutY="103.0" spacing="10" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <padding>
+                          <Insets bottom="20" left="20" right="20" top="20" />
+                      </padding>
+                      <children>
+                          <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="NuRish" textAlignment="CENTER" textFill="#3f4f12">
+                              <font>
+                                  <Font name="Brush Script MT Italic" size="12.0" />
+                              </font>
+                          </Label>
+                          <Label text="Welcome to NuRish" textFill="#462323">
+                              <font>
+                                  <Font name="System Bold" size="12.0" />
+                              </font>
+                          </Label>
+                          <TextField fx:id="usernameField" maxWidth="250" promptText="Username" />
+                          <PasswordField fx:id="passwordField" maxWidth="250" promptText="Password" />
+                          <Label fx:id="messageLabel" textFill="red" />
+                          <Button fx:id="loginButton" text="Login" />
+                          <Label text="--- or ---" textFill="#462323">
+                              <font>
+                                  <Font name="System Bold" size="12.0" />
+                              </font>
+                          </Label>
+                          <TextFlow prefHeight="24.0" prefWidth="111.0" textAlignment="CENTER">
+                              <children>
+                                  <Label text="New to NuRish?" textAlignment="CENTER" textFill="#462323" />
+                                  <Hyperlink fx:id="signupLink" onAction="#handleSignUp" text="Sign Up" textAlignment="CENTER" underline="true" />
                               </children>
-                        <padding>
-                            <Insets bottom="20" left="20" right="20" top="20" />
-                        </padding>
-                    </VBox>
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-    </children>
-
-</AnchorPane>
+                          </TextFlow>
+                      </children>
+                  </VBox>
+              </children>
+          </AnchorPane>
+      </items>
+  </SplitPane>

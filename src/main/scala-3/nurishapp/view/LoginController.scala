@@ -1,7 +1,7 @@
 package nurishapp.view
 
 import javafx.fxml.FXML
-import javafx.scene.control.{Button, Hyperlink, Label, PasswordField, TextField}
+import javafx.scene.control.{Button, Hyperlink, Label, PasswordField, SplitPane, TextField}
 import javafx.scene.image.ImageView
 import javafx.scene.image.Image
 import javafx.scene.Scene
@@ -10,24 +10,51 @@ import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
 import javafx.scene.layout.AnchorPane
 import nurishapp.util.AuthenticationUtil
-import scala.util.{Success, Failure}
+import scala.util.{Failure, Success}
 
 class LoginController {
-  @FXML private var loginPane: AnchorPane = _
+  @FXML private var loginPane: SplitPane = _
   @FXML private var usernameField: TextField = _
   @FXML private var passwordField: PasswordField = _
   @FXML private var messageLabel: Label = _
   @FXML private var loginButton: Button = _
   @FXML private var signupLink: Hyperlink = _
+  @FXML private var loginImage: ImageView = _
+  @FXML private var imageContainer: AnchorPane = _
+
+  private var stage: Stage = _
+
+  def initStage(stage: Stage): Unit = {
+    this.stage = stage
+
+    // Create a scene if not already set
+    if (stage.getScene == null) {
+      val scene = new Scene(loginPane)
+      stage.setScene(scene)
+    }
+
+    // Make the scene resize with the window
+    imageContainer.prefWidthProperty().bind(stage.getScene.widthProperty())
+    imageContainer.prefHeightProperty().bind(stage.getScene.heightProperty())
+  }
 
 
   @FXML
-  def initialize(): Unit = {
-    // Set up login button action
+  private def initialize(): Unit = {
+    // Set up the login button action
     loginButton.setOnAction(_ => handleLogin())
 
     // Initial setup of the message label (hidden until needed)
     messageLabel.setText("")
+
+    // Load the image
+    val imageUrl = getClass.getResource("/images/nurish_login.png")
+    loginImage.setImage(new Image(imageUrl.toString))
+    loginImage.fitWidthProperty().bind(imageContainer.widthProperty())
+    loginImage.fitHeightProperty().bind(imageContainer.heightProperty())
+
+    // Add this to maintain the divider position
+    loginPane.setDividerPositions(0.7)
   }
 
   private def handleLogin(): Unit = {
@@ -46,7 +73,7 @@ class LoginController {
 
       case Success(false) =>
         messageLabel.setText("Invalid Username/Password!")
-        passwordField.setText("") // Clear password field for security
+        passwordField.setText("") // Clear the password field for security
 
       case Failure(exception) =>
         messageLabel.setText("Login error: " + exception.getMessage)
@@ -57,9 +84,16 @@ class LoginController {
 
   @FXML
   private def handleSignUp(): Unit = {
-    val root = FXMLLoader.load[Parent](getClass.getResource("/fxml/Signup.fxml"))
-    val stage = loginPane.getScene.getWindow.asInstanceOf[Stage]
-    stage.setScene(new Scene(root))
+    try {
+      val root = FXMLLoader.load[Parent](getClass.getResource("/fxml/Signup.fxml"))
+      val stage = loginPane.getScene.getWindow.asInstanceOf[Stage]
+      stage.setScene(new Scene(root))
+    } catch {
+      case e: Exception =>
+        messageLabel.setText("Error loading signup page")
+        e.printStackTrace() // For debugging
+    }
   }
-}
 
+
+}
