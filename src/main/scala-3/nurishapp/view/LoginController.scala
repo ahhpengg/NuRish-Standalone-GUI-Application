@@ -33,24 +33,21 @@ class LoginController {
       val scene = new Scene(loginPane)
       stage.setScene(scene)
     }
+    
+    // Make the scene resize with the window
+    imageContainer.prefWidthProperty().bind(loginPane.widthProperty())
+    imageContainer.prefHeightProperty().bind(loginPane.heightProperty())
   }
 
   // handles FXML component setup
   @FXML
   private def initialize(): Unit = {
-
-    // Make the scene resize with the window
-    imageContainer.prefWidthProperty().bind(loginPane.widthProperty())
-    imageContainer.prefHeightProperty().bind(loginPane.heightProperty())
-
+    
     // Load the image
     val imageUrl = getClass.getResource("/images/nurish_login.png")
     loginImage.setImage(new Image(imageUrl.toString))
     loginImage.fitWidthProperty().bind(imageContainer.widthProperty())
     loginImage.fitHeightProperty().bind(imageContainer.heightProperty())
-
-    // Add this to maintain the divider position
-    loginPane.setDividerPositions(0.7)
   }
 
   @FXML
@@ -82,9 +79,13 @@ class LoginController {
   @FXML
   private def handleSignUp(): Unit = {
     try {
-      val root = FXMLLoader.load[Parent](getClass.getResource("/fxml/Signup.fxml"))
+      val loader = new FXMLLoader(getClass.getResource("/nurishapp.view/Signup.fxml"))
+      val root = loader.load[Parent]()
+      val signupController = loader.getController[SignupController]
       val stage = loginPane.getScene.getWindow.asInstanceOf[Stage]
-      stage.setScene(new Scene(root))
+      val scene = new Scene(root)
+      stage.setScene(scene)
+      signupController.initStage(stage)  // Initialize the stage after setting the scene
     } catch {
       case e: Exception =>
         messageLabel.setText("Error loading signup page")
