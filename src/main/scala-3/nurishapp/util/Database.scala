@@ -10,7 +10,7 @@ trait Database {
 
   // Initialize JDBC driver & connection pool
   Class.forName(derbyDriverClassname)
-  ConnectionPool.singleton(dbURL, "me", "mine")
+  ConnectionPool.singleton(dbURL, "peng", "peng")
 
   // Ad-hoc session provider
   given AutoSession = AutoSession
@@ -61,6 +61,17 @@ object UserDatabase extends Database {
 
   def findByUsername(username: String)(implicit session: DBSession = AutoSession): Option[User] = {
     sql"SELECT * FROM users WHERE username = $username"
+      .map(rs => User(
+        Some(rs.int("id")),
+        rs.string("username"),
+        rs.string("password"),
+        rs.string("email"),
+        rs.date("created_at").toLocalDate
+      )).single.apply()
+  }
+
+  def findByEmail(email: String)(implicit session: DBSession = AutoSession): Option[User] = {
+    sql"SELECT * FROM users WHERE email = $email"
       .map(rs => User(
         Some(rs.int("id")),
         rs.string("username"),

@@ -12,7 +12,6 @@ import nurishapp.util.AuthenticationUtil
 import nurishapp.model.User
 import scala.util.{Failure, Success, Try}
 import scalafx.scene.control.Alert
-import scala.collection.mutable.StringBuilder
 
 class SignupController {
   @FXML private var signupPane: SplitPane = _
@@ -37,7 +36,7 @@ class SignupController {
 
   @FXML
   private def initialize(): Unit = {
-    
+
     val imageUrl = getClass.getResource("/images/nurish_signup.png")
     signupImage.setImage(new Image(imageUrl.toString))
     signupImage.fitWidthProperty().bind(imageContainer.widthProperty())
@@ -82,20 +81,33 @@ class SignupController {
     } else if (password.length < 8) {
       messageLabel.setText("Password must be at least 8 characters long")
       false
-    } else if (!password.matches(".*[A-Z].*")) {
-      messageLabel.setText("Password must contain at least one uppercase letter")
-      false
-    } else if (!password.matches(".*[a-z].*")) {
-      messageLabel.setText("Password must contain at least one lowercase letter")
-      false
-    } else if (!password.matches(".*[0-9].*")) {
-      messageLabel.setText("Password must contain at least one number")
-      false
     } else {
-      messageLabel.setText("")
-      true
+      // Check all conditions at once
+      val missingRequirements = new StringBuilder()
+
+      if (!password.matches(".*[A-Z].*"))
+        missingRequirements.append("uppercase letter")
+
+      if (!password.matches(".*[a-z].*")) {
+        if (missingRequirements.nonEmpty) missingRequirements.append(", ")
+        missingRequirements.append("lowercase letter")
+      }
+
+      if (!password.matches(".*[0-9].*")) {
+        if (missingRequirements.nonEmpty) missingRequirements.append(", ")
+        missingRequirements.append("number")
+      }
+
+      if (missingRequirements.nonEmpty) {
+        messageLabel.setText(s"Password must contain at least one ${missingRequirements.toString}")
+        false
+      } else {
+        messageLabel.setText("")
+        true
+      }
     }
   }
+
 
   @FXML
   private def handleSignUp(): Unit = {
@@ -106,28 +118,44 @@ class SignupController {
 
     var errorMessage = StringBuilder()
 
-    // Collect all validation errors
+    // Validate username and add specific error message
     if (!validateUsername(username)) {
-      errorMessage.append("Invalid username\n")
+      errorMessage.append("• " + messageLabel.getText + "\n")  // Add bullet point
     }
+
+    // Validate email and add specific error message
     if (!validateEmail(email)) {
-      errorMessage.append("Invalid email\n")
+      errorMessage.append("• " + messageLabel.getText + "\n")
     }
+
+    // Validate password and add specific error message
     if (!validatePassword(password)) {
-      errorMessage.append("Invalid password\n")
+      errorMessage.append("• " + messageLabel.getText + "\n")
     }
+
+    // Check password confirmation
     if (password != confirmPassword) {
-      errorMessage.append("Passwords do not match\n")
+      errorMessage.append("• Passwords do not match\n")
     }
+
+    // Get the current window safely
+    val currentWindow = Option(stage)
+      .orElse(Option(signupPane).map(_.getScene.getWindow))
+      .getOrElse(throw new RuntimeException("Unable to get current window"))
 
     // Show validation errors if any
     if (errorMessage.nonEmpty) {
-      val alert = new Alert(Alert.AlertType.Error) {
-        initOwner(signupPane.getScene.getWindow)
-        title = "Invalid Fields"
-        headerText = "Please correct invalid fields"
+      val alert = new Alert(Alert.AlertType.Error):
+        initOwner(currentWindow)
+        title = "Sign Up Error"
+        headerText = "Please correct the following errors:"
         contentText = errorMessage.toString
-      }
+        resizable = true
+
+      val dialogPane = alert.getDialogPane
+      dialogPane.setPrefWidth(550)
+      dialogPane.setPrefHeight(300)
+
       alert.showAndWait()
       return
     }
@@ -137,32 +165,29 @@ class SignupController {
       AuthenticationUtil.registerUser(username, password, email) match {
         case Success(user) =>
           // Show success alert
-          val alert = new Alert(Alert.AlertType.Information) {
-            initOwner(signupPane.getScene.getWindow)
+          val alert = new Alert(Alert.AlertType.Information):
+            initOwner(currentWindow)
             title = "Registration Successful"
             headerText = "Account Created Successfully"
             contentText = "Your account has been created. You will now be redirected to the login page."
-          }
           alert.showAndWait()
           handleLogIn() // Redirect to login page after clicking OK
 
         case Failure(exception) =>
-          val alert = new Alert(Alert.AlertType.Error) {
-            initOwner(signupPane.getScene.getWindow)
+          val alert = new Alert(Alert.AlertType.Error):
+            initOwner(currentWindow)
             title = "Registration Error"
             headerText = "Registration Failed"
             contentText = s"Error: ${exception.getMessage}"
-          }
           alert.showAndWait()
       }
     } recover {
       case e: Exception =>
-        val alert = new Alert(Alert.AlertType.Error) {
-          initOwner(signupPane.getScene.getWindow)
+        val alert = new Alert(Alert.AlertType.Error):
+          initOwner(currentWindow)
           title = "System Error"
           headerText = "Registration Failed"
           contentText = "An unexpected error occurred during registration"
-        }
         alert.showAndWait()
         e.printStackTrace() // For debugging
     }
