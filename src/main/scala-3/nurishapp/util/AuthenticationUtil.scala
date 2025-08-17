@@ -10,17 +10,17 @@ object AuthenticationUtil {
   def login(username: String, password: String): Try[Boolean] = {
     Try {
       val hashedPassword = hashPassword(password)
-      UserDatabase.findByUsername(username).exists(_.password.value == hashedPassword)
+      User.findByUsername(username).exists(_.password.value == hashedPassword)
     }
   }
 
   def checkUsernameExists(username: String): Boolean = {
-    UserDatabase.findByUsername(username).isDefined
+    User.findByUsername(username).isDefined
   }
 
   def checkEmailExists(email: String): Boolean = {
     // Add a new method in UserDatabase to check email
-    UserDatabase.findByEmail(email).isDefined
+    User.findByEmail(email).isDefined
   }
 
   def registerUser(username: String, password: String, email: String): Try[User] = {
@@ -32,12 +32,12 @@ object AuthenticationUtil {
       val hashedPassword = hashPassword(password)
       val user = User(
         id = None,
-        username = username,
-        password = hashedPassword,
-        email = email,
-        createdAt = LocalDate.now()
+        usernameS = username,
+        passwordS = hashedPassword,
+        emailS = email,
+        createdAtD = LocalDate.now()
       )
-      UserDatabase.create(user)
+      user.save()
     }
   }
 

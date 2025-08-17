@@ -5,10 +5,12 @@ import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
 import javafx.fxml.FXMLLoader
 import javafx.scene.control.SplitPane
+import nurishapp.util.Database
 import scalafx.Includes.*
 import nurishapp.view.LoginController
 
 object MainApp extends JFXApp3 {
+  Database.setupDB()
   override def start(): Unit = {
     val loader = new FXMLLoader(getClass.getResource("/nurishapp.view/Login.fxml"))
     val root = loader.load[SplitPane]()
