@@ -8,6 +8,7 @@ import javafx.scene.control.SplitPane
 import nurishapp.util.Database
 import scalafx.Includes.*
 import nurishapp.view.LoginController
+import scalafx.scene.image.Image
 
 object MainApp extends JFXApp3 {
   Database.setupDB()
@@ -18,6 +19,7 @@ object MainApp extends JFXApp3 {
 
     stage = new PrimaryStage {
       title = "NuRish"
+      icons += new Image(getClass.getResource("/images/logo.png").toExternalForm)
       scene = new Scene(root)
     }
 
