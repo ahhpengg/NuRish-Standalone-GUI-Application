@@ -9,7 +9,7 @@
     -fx-border-width: 2;
     -fx-text-fill: black;
     -fx-font-size: 14px;
-    -fx-font-family: "Comic Sans MS", sans-serif; /* blocky font if installed */
+    -fx-font-family: "Comic Sans MS", sans-serif;
     -fx-font-weight: bold;
     -fx-cursor: hand;
     -fx-padding: 6 12 6 12;

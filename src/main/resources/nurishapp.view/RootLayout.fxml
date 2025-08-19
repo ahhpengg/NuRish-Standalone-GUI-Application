@@ -12,16 +12,25 @@
             <menus>
                 <Menu mnemonicParsing="false" text="_Program">
                     <items>
-                        <MenuItem onAction="#handleClose" text="_Close">
+                        <MenuItem onAction="#handleBack" text="_Back to Home Page">
                             <accelerator>
-                                <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                <KeyCodeCombination alt="UP" code="B" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                             </accelerator></MenuItem>
+                  <MenuItem onAction="#handleClose" text="_Close">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="_Account" />
+                <Menu mnemonicParsing="false" text="_Account">
+               <items>
+                  <MenuItem onAction="#handleProfile" text="_Profile" />
+                  <MenuItem onAction="#handleLogOut" text="_Log Out" />
+               </items></Menu>
                 <Menu mnemonicParsing="false" text="_Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="_About" />
                     </items>
                 </Menu>
             </menus>

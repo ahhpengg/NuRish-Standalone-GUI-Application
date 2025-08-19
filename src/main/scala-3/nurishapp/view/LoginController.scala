@@ -9,9 +9,10 @@ import javafx.stage.Stage
 import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
 import javafx.scene.layout.{AnchorPane, BorderPane}
-import nurishapp.util.AuthenticationUtil
+import nurishapp.model.User
+import nurishapp.util.{AuthenticationUtil, SessionManager}
 
-import scala.util.{Failure, Success}
+import scala.util.{Failure, Success, Try}
 
 class LoginController {
   @FXML private var loginPane: SplitPane = _
@@ -63,36 +64,47 @@ class LoginController {
 
     AuthenticationUtil.login(username, password) match {
       case Success(true) =>
-        try {
-          // Load the RootLayout first
-          val rootLoader = new FXMLLoader(getClass.getResource("/nurishapp.view/RootLayout.fxml"))
-          val rootLayout = rootLoader.load[BorderPane]()
-          val rootController = rootLoader.getController[RootLayoutController]
+        // Get the user after successful login
+        Try(User.findByUsername(username)) match {
+          case Success(Some(user: User)) =>
+            try {
+              // Save user session
+              SessionManager.login(user)
 
-          // Load the HomePage FXML
-          val homeLoader = new FXMLLoader(getClass.getResource("/nurishapp.view/HomePage.fxml"))
-          val homePage = homeLoader.load[Parent]()
-          val homePageController = homeLoader.getController[HomePageController]
+              // Load the RootLayout first
+              val rootLoader = new FXMLLoader(getClass.getResource("/nurishapp.view/RootLayout.fxml"))
+              val rootLayout = rootLoader.load[BorderPane]()
+              val rootController = rootLoader.getController[RootLayoutController]
 
-          // Set HomePage as the center of RootLayout
-          rootLayout.setCenter(homePage)
+              // Load the HomePage FXML
+              val homeLoader = new FXMLLoader(getClass.getResource("/nurishapp.view/HomePage.fxml"))
+              val homePage = homeLoader.load[Parent]()
+              val homePageController = homeLoader.getController[HomePageController]
 
-          // Ensure menu bar remains visible (force layout update)
-          rootLayout.requestLayout()
+              // Set HomePage as the center of RootLayout
+              rootLayout.setCenter(homePage)
 
-          // Get the current stage
-          val stage = loginPane.getScene.getWindow.asInstanceOf[Stage]
+              // Ensure menu bar remains visible (force layout update)
+              rootLayout.requestLayout()
 
-          // Create and set new scene
-          val scene = new Scene(rootLayout)
-          stage.setScene(scene)
+              // Get the current stage
+              val stage = loginPane.getScene.getWindow.asInstanceOf[Stage]
 
-          // Initialize the home page controller
-          homePageController.initStage(stage) // Assuming you'll add this method to HomePageController
-        } catch {
-          case e: Exception =>
-            messageLabel.setText("Error loading home page")
-            e.printStackTrace() // For debugging
+              // Create and set new scene
+              val scene = new Scene(rootLayout)
+              stage.setScene(scene)
+
+              // Initialize the home page controller
+              homePageController.initStage(stage)
+            } catch {
+              case e: Exception =>
+                messageLabel.setText("Error loading home page")
+                e.printStackTrace() // For debugging
+            }
+          case Success(None) =>
+            messageLabel.setText("User not found after login")
+          case Failure(e) =>
+            messageLabel.setText("Error retrieving user: " + e.getMessage)
         }
 
       case Success(false) =>
