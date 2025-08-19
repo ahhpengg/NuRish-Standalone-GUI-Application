@@ -1,6 +1,6 @@
 package nurishapp.util
 import scalikejdbc.*
-import nurishapp.model.User
+import nurishapp.model.{User, Food, Diet, FoodDiet}
 
 trait Database {
   val derbyDriverClassname = "org.apache.derby.jdbc.EmbeddedDriver"
@@ -21,9 +21,18 @@ trait Database {
 
 // Singleton object for database initialization
 object Database extends Database {
-  def setupDB() = {
+  def setupDB(): Unit = {
     if (!hasTable("users"))
       User.initializeTable()
+
+    if (!hasTable("foods"))
+      Food.initializeTable()
+
+    if (!hasTable("diets"))
+      Diet.initializeTable()
+
+    if (!hasTable("food_diets"))
+      FoodDiet.initializeTable()
   }
 }
 
