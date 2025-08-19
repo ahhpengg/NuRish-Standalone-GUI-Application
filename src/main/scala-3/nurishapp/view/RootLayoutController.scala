@@ -10,13 +10,43 @@ import javafx.stage.Stage
 import nurishapp.MainApp
 import nurishapp.util.SessionManager
 import nurishapp.model.User
+import scala.reflect.Selectable.reflectiveSelectable
 
 @FXML
 class RootLayoutController():
   @FXML private var rootLayout: BorderPane = _
 
   private var stage: Stage = _
-  
+
+  def initStage(primaryStage: Stage): Unit =
+    this.stage = primaryStage
+
+  // Use this whenever you need a Stage, avoids NPEs if initStage wasn't called yet
+  private def sceneStage: Stage =
+    if (stage != null) stage
+    else rootLayout.getScene.getWindow.asInstanceOf[Stage]
+
+  // helper to load any page into the center of root layout
+  def setCenterPage(fxmlPath: String): Unit = {
+    try {
+      val loader = new FXMLLoader(getClass.getResource(fxmlPath))
+      val page = loader.load[Parent]()
+
+      // Optional: if page has its own controller with initStage
+      val controller = loader.getController[AnyRef]
+      controller match {
+        case c: {def initStage(s: Stage): Unit} => c.initStage(sceneStage)
+        case _ => // ignore if no initStage
+      }
+
+      rootLayout.setCenter(page)
+    } catch {
+      case e: Exception =>
+        showAlert(Alert.AlertType.ERROR, "Navigation Error", s"Could not load $fxmlPath: ${e.getMessage}")
+        e.printStackTrace()
+    }
+  }
+
   @FXML
   private def handleClose(): Unit = {
     // Show confirmation dialog
@@ -65,18 +95,8 @@ class RootLayoutController():
       case Some(user) =>
         try {
           // Load user details page as center content
-          val loader = new FXMLLoader(getClass.getResource("/nurishapp.view/Profile.fxml"))
-          val profilePage = loader.load[Parent]()
-          val profileController = loader.getController[ProfileController]
-
-          // Set user details as the center content
-          rootLayout.setCenter(profilePage)
-
-          // Initialize the controller if it exists
-          if (profileController != null) {
-            profileController.initStage(stage)
-            profileController.setUser(user) // Pass the current user
-          }
+          setCenterPage("/nurishapp.view/Profile.fxml")
+          
         } catch {
           case e: Exception =>
             showAlert(AlertType.ERROR, "Load Error", s"Error loading user details: ${e.getMessage}")
@@ -118,17 +138,8 @@ class RootLayoutController():
   private def handleAbout(): Unit = {
     try {
       // Load about page as center content
-      val loader = new FXMLLoader(getClass.getResource("/nurishapp.view/About.fxml"))
-      val aboutPage = loader.load[Parent]()
-      val aboutController = loader.getController[AboutController]
-
-      // Set about page as the center content
-      rootLayout.setCenter(aboutPage)
-
-      // Initialize the controller if it exists
-      if (aboutController != null) {
-        aboutController.initStage(stage)
-      }
+      setCenterPage("/nurishapp.view/About.fxml")
+      
     } catch {
       case e: Exception =>
         showAlert(AlertType.ERROR, "Load Error", s"Error loading about page: ${e.getMessage}")
@@ -139,15 +150,8 @@ class RootLayoutController():
   // Helper methods
   private def loadHomePage(): Unit = {
     try {
-      val homeLoader = new FXMLLoader(getClass.getResource("/nurishapp.view/HomePage.fxml"))
-      val homePage = homeLoader.load[Parent]()
-      val homePageController = homeLoader.getController[HomePageController]
-
-      rootLayout.setCenter(homePage)
-
-      if (homePageController != null) {
-        homePageController.initStage(stage)
-      }
+      setCenterPage("/nurishapp.view/HomePage.fxml")
+      
     } catch {
       case e: Exception =>
         showAlert(AlertType.ERROR, "Load Error", s"Error loading home page: ${e.getMessage}")
@@ -162,8 +166,8 @@ class RootLayoutController():
       val loginController = loginLoader.getController[LoginController]
 
       // Replace entire scene with login page (no menu bar for login)
-      val scene = new Scene(loginPage)
-      stage.setScene(scene)
+      val s = sceneStage // <-- safe getter
+      s.setScene(new Scene(loginPage))
 
       if (loginController != null) {
         loginController.initStage(stage)

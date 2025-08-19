@@ -6,7 +6,7 @@
 <?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.RootLayoutController">
+<BorderPane fx:id="rootLayout" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.RootLayoutController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
@@ -30,7 +30,7 @@
                </items></Menu>
                 <Menu mnemonicParsing="false" text="_Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="_About" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="About" />
                     </items>
                 </Menu>
             </menus>

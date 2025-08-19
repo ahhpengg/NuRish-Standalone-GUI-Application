@@ -94,8 +94,11 @@ class LoginController {
               val scene = new Scene(rootLayout)
               stage.setScene(scene)
 
-              // Initialize the home page controller
-              homePageController.initStage(stage)
+              // IMPORTANT: pass the Stage into RootLayoutController
+              rootController.initStage(stage)
+
+              // Show home page initially
+              rootController.setCenterPage("/nurishapp.view/HomePage.fxml")
             } catch {
               case e: Exception =>
                 messageLabel.setText("Error loading home page")

@@ -8,6 +8,7 @@ import javafx.scene.Parent
 import javafx.stage.Stage
 
 class AboutController {
+  @FXML private var aboutPage: StackPane = _
   @FXML private var aboutBg: ImageView = _
   @FXML private var backButton: Button = _
 
@@ -24,21 +25,11 @@ class AboutController {
     if (imageUrl != null) {
       aboutBg.setImage(new Image(imageUrl.toString))
     }
+    aboutBg.fitWidthProperty().bind(aboutPage.widthProperty())
+    aboutBg.fitHeightProperty().bind(aboutPage.heightProperty())
+    aboutBg.setPreserveRatio(false)
 
-    // Make the image fit to the StackPane
-    // Get parent StackPane when it's available
-    aboutBg.parentProperty().addListener((_, _, newParent) => {
-      if (newParent != null && newParent.isInstanceOf[StackPane]) {
-        val stackPane = newParent.asInstanceOf[StackPane]
 
-        // Bind ImageView size to StackPane size
-        aboutBg.fitWidthProperty().bind(stackPane.widthProperty())
-        aboutBg.fitHeightProperty().bind(stackPane.heightProperty())
-
-        // Set preserve ratio to false to fill completely
-        aboutBg.setPreserveRatio(false)
-      }
-    })
   }
 
   @FXML
