@@ -1,0 +1,61 @@
+#mealPlannerPane {
+    -fx-font-family: "Comic Sans MS";
+}
+
+#mealPlannerBox {
+    -fx-font-weight: bold;
+}
+
+.label {
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-weight: bold;
+}
+
+.button.selected-diet {
+    -fx-background-color: #4CAF50;   /* Green highlight */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-color: #2e7d32;       /* Darker green border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 8;            /* rounded border */
+}
+
+#mealPlannerPane {
+    -fx-background-image: url("/images/mealplanner_bg.png");
+    -fx-background-size: cover; /* stretch to fit */
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}
+
+#generatedMealPane {
+    -fx-background-color: transparent; /* removes outer background */
+}
+
+#generatedMealPane .viewport {
+    -fx-background-color: transparent; /* removes content background */
+}
+
+#resultsBox {
+    -fx-background-color: rgba(255, 255, 255, 0.6); /* white with 60% opacity */
+    -fx-background-radius: 10;   /* optional: rounded corners */
+    -fx-padding: 10;             /* some spacing inside */
+}
+
+.button {
+    -fx-background-radius: 8;
+    -fx-background-color: #e0e0e0;
+    -fx-text-fill: #333;
+    -fx-font-size: 13px;
+    -fx-padding: 6 12;
+    -fx-border-color: transparent; /* avoid conflicts with selected */
+}
+
+.button:hover {
+    -fx-background-color: #c8e6c9;
+}
+
+.title-label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2e7d32;
+}

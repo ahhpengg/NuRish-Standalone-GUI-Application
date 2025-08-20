@@ -20,7 +20,7 @@
       <!-- VBox for main menu buttons -->
       <VBox alignment="CENTER" spacing="10">
           <children>
-              <Button prefWidth="210.0" text="Personalized Meal Planner" />
+              <Button onAction="#handleMealPlanner" prefWidth="210.0" text="Personalized Meal Planner" />
               <Button prefWidth="210.0" text="Food Search" />
               <Button prefWidth="210.0" text="Nutrition Calculator" />
               <Button prefWidth="210.0" text="Food Aid Program" />

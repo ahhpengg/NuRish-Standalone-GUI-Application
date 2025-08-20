@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.Integer?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+
+<BorderPane fx:id="mealPlannerPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="820.0" stylesheets="@MealPlanner.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.MealPlannerController">
+
+    <top>
+        <VBox fx:id="mealPlannerBox" alignment="CENTER" spacing="14">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+            <Label style="-fx-font-size:20px; -fx-font-weight:bold" text="Create your meal plan" />
+             <Label text="Preferred Diet:">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Label>
+
+            <!-- Diet -->
+            <HBox alignment="CENTER" prefWidth="780.0" spacing="10">
+            <Button fx:id="anythingBtn" alignment="CENTER" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAnything" prefHeight="135.0" prefWidth="120.0" text="Anything">
+               <graphic>
+                  <ImageView fx:id="anythingIcon" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button fx:id="ketoBtn" alignment="CENTER" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleKeto" prefHeight="135.0" prefWidth="120.0" text="Ketogenic">
+               <graphic>
+                  <ImageView fx:id="ketogenicIcon" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button fx:id="medBtn" alignment="CENTER" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleMediterranean" prefHeight="135.0" prefWidth="120.0" text="Mediterranean">
+               <graphic>
+                  <ImageView fx:id="mediterraneanIcon" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button fx:id="paleoBtn" alignment="CENTER" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handlePaleo" prefHeight="135.0" prefWidth="120.0" text="Paleolithic">
+               <graphic>
+                  <ImageView fx:id="paleolithicIcon" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button fx:id="veganBtn" alignment="CENTER" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleVegan" prefHeight="135.0" prefWidth="120.0" text="Vegan">
+               <graphic>
+                  <ImageView fx:id="veganIcon" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button fx:id="vegeBtn" alignment="CENTER" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleVegetarian" prefHeight="135.0" prefWidth="120.0" text="Vegetarian">
+               <graphic>
+                  <ImageView fx:id="vegetarianIcon" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            </HBox>
+
+            <!-- Calories & Meals -->
+            <HBox alignment="CENTER" spacing="10">
+                <Label text="I want to eat" />
+                <TextField fx:id="caloriesField" prefWidth="90" promptText="e.g. 1800" />
+                <Label text="calories in" />
+                <ComboBox fx:id="mealCountBox">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <Integer fx:value="1" />
+                            <Integer fx:value="2" />
+                            <Integer fx:value="3" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Label text="meal(s)" />
+            </HBox>
+
+            <!-- Macros (minimums) -->
+            <HBox alignment="CENTER" spacing="12">
+                <Label text="With at least" />
+            <TextFlow>
+               <children>
+                      <TextField fx:id="carbsMinField" prefWidth="90" promptText="Carbs (g)" />
+                  <Label text=" Carbs (g)" />
+               </children>
+            </TextFlow>
+            <TextFlow>
+               <children>
+                      <TextField fx:id="fatMinField" prefWidth="90" promptText="Fat (g)" />
+                  <Label text=" Fat (g)" />
+               </children>
+            </TextFlow>
+            <TextFlow>
+               <children>
+                      <TextField fx:id="proteinMinField" prefWidth="90" promptText="Protein (g)" />
+                  <Label text=" Protein (g)" />
+               </children>
+            </TextFlow>
+            </HBox>
+         <Label fx:id="messageLabel" textFill="RED" />
+
+            <Button fx:id="generateBtn" onAction="#handleGenerate" prefWidth="140" text="Generate" />
+        </VBox>
+    </top>
+   <bottom>
+        <!-- Results -->
+        <ScrollPane fx:id="generatedMealPane" fitToWidth="true" BorderPane.alignment="CENTER">
+            <content>
+                <VBox fx:id="resultsBox" alignment="CENTER" fillWidth="false" minWidth="-Infinity" prefWidth="740.0" spacing="16" visible="false">
+                    <padding>
+                        <Insets bottom="20" left="20" right="20" top="20" />
+                    </padding>
+
+                    <Label fx:id="summaryTitle" style="-fx-font-size:18px; -fx-font-weight:bold" />
+                    <Label fx:id="totalsLabel" />
+
+                    <VBox fx:id="breakfastBox" alignment="CENTER" fillWidth="false" spacing="6" />
+                    <VBox fx:id="lunchBox" alignment="CENTER" fillWidth="false" spacing="6" />
+                    <VBox fx:id="dinnerBox" alignment="CENTER" fillWidth="false" spacing="6" />
+                    <VBox fx:id="singleMealBox" alignment="CENTER" fillWidth="false" spacing="6" />
+                </VBox>
+            </content>
+        </ScrollPane>
+   </bottom>
+</BorderPane>

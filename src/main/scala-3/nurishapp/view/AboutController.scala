@@ -13,9 +13,17 @@ class AboutController {
   @FXML private var backButton: Button = _
 
   private var stage: Stage = _
+  private var rootController: RootLayoutController = _
 
   def initStage(stage: Stage): Unit = {
     this.stage = stage
+
+    stage.setTitle("NuRish - About Us")
+  }
+
+  // Inject RootLayoutController
+  def setRootController(rootController: RootLayoutController): Unit = {
+    this.rootController = rootController
   }
 
   @FXML
@@ -28,30 +36,17 @@ class AboutController {
     aboutBg.fitWidthProperty().bind(aboutPage.widthProperty())
     aboutBg.fitHeightProperty().bind(aboutPage.heightProperty())
     aboutBg.setPreserveRatio(false)
-
-
   }
 
   @FXML
   private def handleBack(): Unit = {
     try {
-      // Load HomePage FXML
-      val homeLoader = new FXMLLoader(getClass.getResource("/nurishapp.view/HomePage.fxml"))
-      val homePage = homeLoader.load[Parent]()
-      val homePageController = homeLoader.getController[HomePageController]
-
-      // Get the current scene's root (which should be the BorderPane from RootLayout)
-      val scene = backButton.getScene
-      val rootLayout = scene.getRoot.asInstanceOf[BorderPane]
-
-      // Set HomePage as the center of RootLayout
-      rootLayout.setCenter(homePage)
-
-      // Initialize the home page controller
-      if (homePageController != null) {
-        homePageController.initStage(stage)
+      if (rootController != null) {
+        // Use RootLayoutController to switch back to HomePage
+        rootController.setCenterPage("/nurishapp.view/HomePage.fxml")
+      } else {
+        println("RootLayoutController not set in AboutController")
       }
-
     } catch {
       case e: Exception =>
         println(s"Error navigating back to home page: ${e.getMessage}")

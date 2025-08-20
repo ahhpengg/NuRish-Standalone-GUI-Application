@@ -26,23 +26,36 @@ class RootLayoutController():
     if (stage != null) stage
     else rootLayout.getScene.getWindow.asInstanceOf[Stage]
 
-  // helper to load any page into the center of root layout
+  // Central method to switch the center page of the RootLayout.
+  // Automatically injects RootLayoutController and Stage if defined in the controller.
   def setCenterPage(fxmlPath: String): Unit = {
     try {
       val loader = new FXMLLoader(getClass.getResource(fxmlPath))
       val page = loader.load[Parent]()
-
-      // Optional: if page has its own controller with initStage
       val controller = loader.getController[AnyRef]
+
+      // If the controller has setRootController, inject this RootLayoutController
       controller match {
-        case c: {def initStage(s: Stage): Unit} => c.initStage(sceneStage)
-        case _ => // ignore if no initStage
+        case c: { def setRootController(root: RootLayoutController): Unit } =>
+          c.setRootController(this)
+        case _ => // ignore if controller doesn’t need it
       }
 
+      // If the controller has initStage, inject the Stage
+      if (stage != null) {
+        controller match {
+          case c: { def initStage(stage: Stage): Unit } =>
+            c.initStage(stage)
+          case _ =>
+        }
+      }
+
+      // Finally replace the center page
       rootLayout.setCenter(page)
+
     } catch {
       case e: Exception =>
-        showAlert(Alert.AlertType.ERROR, "Navigation Error", s"Could not load $fxmlPath: ${e.getMessage}")
+        println(s"Error loading page $fxmlPath: ${e.getMessage}")
         e.printStackTrace()
     }
   }
@@ -96,7 +109,7 @@ class RootLayoutController():
         try {
           // Load user details page as center content
           setCenterPage("/nurishapp.view/Profile.fxml")
-          
+
         } catch {
           case e: Exception =>
             showAlert(AlertType.ERROR, "Load Error", s"Error loading user details: ${e.getMessage}")
@@ -139,7 +152,7 @@ class RootLayoutController():
     try {
       // Load about page as center content
       setCenterPage("/nurishapp.view/About.fxml")
-      
+
     } catch {
       case e: Exception =>
         showAlert(AlertType.ERROR, "Load Error", s"Error loading about page: ${e.getMessage}")
@@ -151,7 +164,7 @@ class RootLayoutController():
   private def loadHomePage(): Unit = {
     try {
       setCenterPage("/nurishapp.view/HomePage.fxml")
-      
+
     } catch {
       case e: Exception =>
         showAlert(AlertType.ERROR, "Load Error", s"Error loading home page: ${e.getMessage}")

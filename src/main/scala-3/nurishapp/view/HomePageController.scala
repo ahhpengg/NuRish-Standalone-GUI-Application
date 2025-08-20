@@ -1,6 +1,8 @@
 package nurishapp.view
 
 import javafx.fxml.FXML
+import javafx.scene.control.Alert
+import javafx.scene.control.Alert.AlertType
 import javafx.scene.layout.StackPane
 import javafx.scene.media.{Media, MediaPlayer, MediaView}
 import javafx.stage.Stage
@@ -16,11 +18,17 @@ class HomePageController {
   private var mediaView: MediaView = _
   private var stage: Stage = _
 
+  private var rootController: RootLayoutController = _
+
+  def setRootController(controller: RootLayoutController): Unit = {
+    this.rootController = controller
+  }
+
   def initStage(stage: Stage): Unit = {
     this.stage = stage
 
     // Set up any stage-specific configurations here
-    stage.setTitle("Nurish - Home")
+    stage.setTitle("NuRish - Home")
   }
 
   @FXML
@@ -61,6 +69,23 @@ class HomePageController {
     Option(mediaPlayer).foreach { player =>
       player.stop()
       player.dispose()
+    }
+  }
+
+  private def showAlert(alertType: AlertType, title: String, message: String): Unit = {
+    val alert = new Alert(alertType)
+    alert.setTitle(title)
+    alert.setHeaderText(null)
+    alert.setContentText(message)
+    alert.showAndWait()
+  }
+
+  @FXML
+  def handleMealPlanner(): Unit = {
+    if (rootController != null) {
+      rootController.setCenterPage("/nurishapp.view/MealPlanner.fxml")
+    } else {
+      println("RootLayoutController not set in HomePageController")
     }
   }
 }

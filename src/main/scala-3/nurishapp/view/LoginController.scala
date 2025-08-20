@@ -81,6 +81,9 @@ class LoginController {
               val homePage = homeLoader.load[Parent]()
               val homePageController = homeLoader.getController[HomePageController]
 
+              // Link HomePageController with RootLayoutController
+              homePageController.setRootController(rootController)
+
               // Set HomePage as the center of RootLayout
               rootLayout.setCenter(homePage)
 
@@ -97,8 +100,9 @@ class LoginController {
               // IMPORTANT: pass the Stage into RootLayoutController
               rootController.initStage(stage)
 
-              // Show home page initially
-              rootController.setCenterPage("/nurishapp.view/HomePage.fxml")
+              stage.setTitle("NuRish - Home")
+              println("Successfully logged in as " + user.username.get + "!")
+
             } catch {
               case e: Exception =>
                 messageLabel.setText("Error loading home page")
