@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="foodSearchPane" prefHeight="540" prefWidth="820" stylesheets="@FoodSearch.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.FoodSearchController">
+
+    <top>
+        <VBox spacing="12">
+            <padding><Insets bottom="12" left="18" right="18" top="18" /></padding>
+
+            <Label fx:id="fsLabel" style="-fx-font-weight:bold;" text="Food Search">
+                <font><Font size="20" /></font>
+            </Label>
+
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Category:" />
+                <ComboBox fx:id="categoryBox" prefWidth="220" />
+                <Label text="Food:" />
+                <!-- Editable acts like a TextField with dropdown -->
+                <ComboBox fx:id="foodBox" editable="true" prefWidth="320" promptText="Type to search…" />
+                <Button fx:id="searchBtn" onAction="#handleSearch" prefWidth="110" text="Search" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;">
+            <content>
+                <VBox fx:id="resultsPane" spacing="16" visible="false">
+                    <padding><Insets bottom="18" left="18" right="18" top="18" /></padding>
+
+                    <HBox fx:id="resultsBox" spacing="16">
+                        <!-- Image on the left -->
+                        <ImageView fx:id="foodImage" fitHeight="220" fitWidth="220" preserveRatio="true" />
+                        <!-- Info on the right -->
+                        <GridPane fx:id="infoPane" hgap="10" vgap="6">
+                            <columnConstraints>
+                                <ColumnConstraints halignment="RIGHT" minWidth="90" />
+                                <ColumnConstraints halignment="LEFT" minWidth="180" />
+                            </columnConstraints>
+
+                            <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                            <Label fx:id="nameValue" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                            <Label text="Category:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                            <Label fx:id="categoryValue" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                            <Label text="Serving Unit:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                            <Label fx:id="servingUnitValue" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                            <Label text="Calories:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                            <Label fx:id="caloriesValue" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                            <Label text="Carbs (g):" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                            <Label fx:id="carbsValue" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                            <Label text="Protein (g):" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                            <Label fx:id="proteinValue" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                            <Label text="Fat (g):" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                            <Label fx:id="fatValue" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                     </rowConstraints>
+                        </GridPane>
+                    </HBox>
+
+                    <Label fx:id="nbLabel" style="-fx-font-weight:bold;" text="Nutrition Breakdown" />
+                    <PieChart fx:id="macroChart" labelsVisible="true" legendVisible="true" />
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>

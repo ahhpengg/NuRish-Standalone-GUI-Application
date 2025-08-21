@@ -88,4 +88,13 @@ class HomePageController {
       println("RootLayoutController not set in HomePageController")
     }
   }
+
+  @FXML
+  def handleFoodSearch(): Unit = {
+    if (rootController != null) {
+      rootController.setCenterPage("/nurishapp.view/FoodSearch.fxml")
+    } else {
+      println("RootLayoutController not set in HomePageController")
+    }
+  }
 }

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane fx:id="homePage" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="800.0" stylesheets="@Button.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.HomePageController">
+<StackPane fx:id="homePage" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="820.0" stylesheets="@HomePage.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.HomePageController">
 
     <!-- Video container -->
     <StackPane fx:id="videoPane" />
@@ -20,14 +20,14 @@
       <!-- VBox for main menu buttons -->
       <VBox alignment="CENTER" spacing="10">
           <children>
-              <Button onAction="#handleMealPlanner" prefWidth="210.0" text="Personalized Meal Planner" />
-              <Button prefWidth="210.0" text="Food Search" />
-              <Button prefWidth="210.0" text="Nutrition Calculator" />
-              <Button prefWidth="210.0" text="Food Aid Program" />
-              <Button prefWidth="210.0" text="Quit Program" />
+              <Button onAction="#handleMealPlanner" prefWidth="220.0" text="Personalized Meal Planner" />
+              <Button onAction="#handleFoodSearch" prefWidth="220.0" text="Food Search" />
+              <Button prefWidth="220.0" text="Nutrition Calculator" />
+              <Button prefWidth="220.0" text="Food Aid Program" />
+              <Button prefWidth="220.0" text="Quit Program" />
           </children>
       <StackPane.margin>
-         <Insets top="120.0" />
+         <Insets top="150.0" />
       </StackPane.margin>
       </VBox>
 

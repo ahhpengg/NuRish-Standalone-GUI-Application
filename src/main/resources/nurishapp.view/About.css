@@ -1,0 +1,31 @@
+.button {
+    -fx-background-color:
+            linear-gradient(#d4a574, #a0785a),
+            linear-gradient(#e6c08a, #b8956f);
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 0;
+    -fx-border-color: #5d4037;
+    -fx-border-width: 2;
+    -fx-text-fill: #3e2723;
+    -fx-font-size: 14px;
+    -fx-font-family: "Comic Sans MS", sans-serif;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 6 12 6 12;
+}
+
+/* Hover effect - Lighter brown */
+.button:hover {
+    -fx-background-color:
+            linear-gradient(#f5deb3, #deb887),
+            linear-gradient(#e6c08a, #d2a679);
+    -fx-text-fill: #3e2723;
+}
+
+/* Pressed effect - Darker brown */
+.button:pressed {
+    -fx-background-color:
+            linear-gradient(#8b4513, #654321),
+            linear-gradient(#a0522d, #795548);
+    -fx-text-fill: #f5deb3;
+}

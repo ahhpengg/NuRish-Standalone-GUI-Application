@@ -1,0 +1,67 @@
+.root {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+}
+
+/* Logo styling with subtle glow */
+#logoImage {
+    -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 15, 0, 0, 0);
+    -fx-opacity: 0.95;
+}
+
+/* VBox container for buttons */
+.vbox {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-background-radius: 15;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 12, 0, 0, 4);
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 1;
+    -fx-border-radius: 15;
+}
+
+/* Button base styling with natural earth tones */
+.button {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(to bottom, #6b8e23, #556b2f); /* olive green */
+    -fx-background-radius: 12;
+    -fx-border-color: rgba(255, 255, 255, 0.2);
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+    -fx-padding: 12 20 12 20;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 6, 0, 0, 2);
+    -fx-min-height: 45;
+}
+
+/* Button hover effects - lighter natural tone */
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #8fbc8f, #6b8e23); /* sage green */
+    -fx-border-color: rgba(255, 255, 255, 0.4);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 3);
+    -fx-text-fill: #ffffff;
+}
+
+/* Button pressed effect */
+.button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #556b2f, #4a5d23); /* darker olive */
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.3), 4, 0, 0, 1);
+}
+
+/* Label styling with natural appearance */
+.label {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgba(255, 255, 255, 0.9);
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.6), 1, 0, 1, 1);
+    -fx-background-color: rgba(0, 0, 0, 0.15);
+    -fx-background-radius: 6;
+    -fx-padding: 4 8 4 8;
+}

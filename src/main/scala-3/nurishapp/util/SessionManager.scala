@@ -36,4 +36,7 @@ object SessionManager {
         Failure(new RuntimeException("No user logged in"))
     }
   }
+
+  // helper to get logged in user's id so controllers don’t need to pattern-match every time
+  def currentUserId: Option[Int] = _currentUser.flatMap(_.id)
 }
