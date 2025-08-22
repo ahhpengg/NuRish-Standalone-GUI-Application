@@ -4,12 +4,14 @@ import javafx.event.ActionEvent
 import javafx.fxml.{FXML, FXMLLoader}
 import javafx.scene.control.Alert.AlertType
 import javafx.scene.control.{Alert, ButtonType}
+import javafx.scene.image.Image
 import javafx.scene.{Parent, Scene}
 import javafx.scene.layout.BorderPane
 import javafx.stage.Stage
 import nurishapp.MainApp
 import nurishapp.util.SessionManager
 import nurishapp.model.User
+
 import scala.reflect.Selectable.reflectiveSelectable
 
 @FXML
@@ -67,6 +69,11 @@ class RootLayoutController():
     alert.setTitle("Exit Application")
     alert.setHeaderText("Confirm Exit")
     alert.setContentText("Are you sure you want to exit the application?")
+
+    // Set custom icon
+    val stage = alert.getDialogPane.getScene.getWindow.asInstanceOf[Stage]
+    val icon = new Image(getClass.getResourceAsStream("/images/logo.png"))
+    stage.getIcons.add(icon)
 
     val result = alert.showAndWait()
 

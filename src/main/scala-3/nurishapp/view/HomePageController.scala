@@ -1,12 +1,14 @@
 package nurishapp.view
 
 import javafx.fxml.FXML
-import javafx.scene.control.Alert
+import javafx.scene.control.{Alert, ButtonType}
 import javafx.scene.control.Alert.AlertType
 import javafx.scene.layout.StackPane
 import javafx.scene.media.{Media, MediaPlayer, MediaView}
 import javafx.stage.Stage
 import javafx.scene.image.{Image, ImageView}
+import nurishapp.MainApp
+import nurishapp.util.SessionManager
 
 import scala.util.{Failure, Success, Try}
 
@@ -104,6 +106,41 @@ class HomePageController {
       rootController.setCenterPage("/nurishapp.view/NutritionCalculator.fxml")
     } else {
       println("RootLayoutController not set in HomePageController")
+    }
+  }
+  
+  @FXML
+  def handleQuit(): Unit = {
+    // Show confirmation dialog
+    val alert = new Alert(AlertType.CONFIRMATION)
+    alert.setTitle("Exit Application")
+    alert.setHeaderText("Confirm Exit")
+    alert.setContentText("Are you sure you want to exit the application?")
+
+    // Set custom icon
+    val stage = alert.getDialogPane.getScene.getWindow.asInstanceOf[Stage]
+    val icon = new Image(getClass.getResourceAsStream("/images/logo.png"))
+    stage.getIcons.add(icon)
+    
+    val result = alert.showAndWait()
+
+    if (result.isPresent && result.get() == ButtonType.OK) {
+      try {
+        // Cleanup any resources if needed
+        SessionManager.logout()
+
+        // Close the application
+        if (stage != null) {
+          MainApp.stage.close()
+        }
+      } catch {
+        case e: Exception =>
+          e.printStackTrace()
+          // Force close even if there's an error
+          if (stage != null) {
+            MainApp.stage.close()
+          }
+      }
     }
   }
 }
