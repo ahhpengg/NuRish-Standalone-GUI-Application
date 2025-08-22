@@ -3,12 +3,13 @@
     -fx-font-weight: bold;
 }
 
-/* BorderPane background with image */
-#ingredientEditPane {
-    -fx-background-image: url("/images/ingredient_edit_dialog_bg.png");
+#addMealPane {
+    -fx-background-image: url("/images/add_meal_dialog_bg.png");
     -fx-background-size: cover;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
+    /* Fallback solid color if no background image */
+    -fx-background-color: #f5f5dc; /* beige */
 }
 
 /* Label styling */
@@ -19,45 +20,53 @@
     -fx-font-size: 14px;
 }
 
-/* Field labels (Category:, Food:, Serving:) */
-#categoryLabel, #foodLabel {
+/* Main title label styling */
+.label[style*="font-weight:bold"] {
+    -fx-font-weight: 900;
+    -fx-font-size: 16px;
+    -fx-text-fill: #3e2723; /* very dark brown */
+}
+
+/* Field labels (Category:, Serving Unit:, Preferred meal:) */
+.label[minWidth="140"] {
     -fx-font-weight: 900;
     -fx-text-fill: #3e2723; /* very dark brown */
-    -fx-min-width: 120;
+    -fx-min-width: 140;
 }
 
-#servingLabel {
-    -fx-font-weight: 900;
-    -fx-text-fill: #3e2723;
-    -fx-min-width: 120;
+/* Info/hint label */
+.label[style*="font-size:11px"] {
+    -fx-font-size: 11px;
+    -fx-text-fill: #8b4513; /* saddle brown */
+    -fx-font-style: italic;
+    -fx-opacity: 0.9;
 }
 
-/* Section header label */
-#npsLabel {
-    -fx-font-weight: 900;
-    -fx-font-size: 15px;
-    -fx-text-fill: #3e2723;
-}
-
-/* Nutrition display label */
-#nutritionPerServingLabel {
-    -fx-font-size: 13px;
-    -fx-text-fill: #654321;
-    -fx-background-color: rgba(245, 222, 179, 0.9); /* wheat with transparency */
-    -fx-background-radius: 6;
-    -fx-padding: 8 12 8 12;
-    -fx-border-color: rgba(139, 69, 19, 0.4);
-    -fx-border-width: 1;
+/* TextField styling - Brown theme */
+.text-field {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-background-color: #f5deb3; /* wheat */
+    -fx-border-color: #8b4513; /* saddle brown */
     -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-border-width: 2;
+    -fx-text-fill: #654321; /* dark brown */
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.15), 2, 0, 0, 1);
+    -fx-padding: 8 12 8 12;
 }
 
-/* Serving unit label */
-#servingUnitValue {
-    -fx-font-size: 14px;
-    -fx-text-fill: #654321;
+.text-field:focused {
+    -fx-border-color: #a0522d; /* sienna */
+    -fx-effect: dropshadow(one-pass-box, rgba(160, 82, 45, 0.4), 4, 0, 0, 1);
+}
+
+.text-field .prompt-text {
+    -fx-text-fill: rgba(101, 67, 33, 0.6); /* dark brown with transparency */
     -fx-font-style: italic;
 }
 
+/* ComboBox styling - Brown theme */
 .combo-box {
     -fx-font-family: "Comic Sans MS", cursive, sans-serif;
     -fx-font-weight: bold;
@@ -93,13 +102,6 @@
     -fx-background-color: #a0522d; /* sienna */
 }
 
-/* Ensure editable ComboBox text field has proper styling */
-.combo-box:editable .text-input {
-    -fx-background-color: #f5deb3; /* wheat */
-    -fx-border-color: transparent;
-    -fx-background-radius: 6 0 0 6;
-}
-
 /* ComboBox dropdown styling */
 .combo-box-popup .list-view {
     -fx-background-color: #f5deb3; /* wheat */
@@ -107,83 +109,27 @@
     -fx-border-width: 2;
     -fx-border-radius: 6;
     -fx-background-radius: 6;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 6, 0, 0, 3);
 }
 
 .combo-box-popup .list-view .list-cell {
     -fx-font-family: "Comic Sans MS", cursive, sans-serif;
     -fx-font-weight: bold;
     -fx-text-fill: #654321; /* dark brown */
-    -fx-background-color: #f5deb3; /* wheat - explicit background */
+    -fx-background-color: transparent;
 }
 
 .combo-box-popup .list-view .list-cell:hover {
-    -fx-background-color: #deb887; /* burlywood for hover */
-    -fx-text-fill: #3e2723; /* very dark brown */
+    -fx-background-color: rgba(160, 82, 45, 0.2); /* sienna with transparency */
 }
 
 .combo-box-popup .list-view .list-cell:selected {
-    -fx-background-color: #d2b48c; /* tan for selected */
+    -fx-background-color: #deb887; /* burlywood */
     -fx-text-fill: #3e2723; /* very dark brown */
-}
-
-.combo-box-popup .list-view .list-cell:filled:selected:focused {
-    -fx-background-color: #cd853f; /* peru for focused selected */
-    -fx-text-fill: white;
-}
-
-/* Additional ComboBox popup styling to ensure consistent background */
-.combo-box-popup {
-    -fx-background-color: #f5deb3; /* wheat */
-    -fx-background-radius: 6;
-    -fx-border-color: #8b4513; /* saddle brown */
-    -fx-border-width: 2;
-    -fx-border-radius: 6;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 6, 0, 0, 3);
-}
-
-/* Spinner styling - Brown theme */
-.spinner {
-    -fx-background-color: #f5deb3; /* wheat */
-    -fx-border-color: #8b4513; /* saddle brown */
-    -fx-border-radius: 6;
-    -fx-background-radius: 6;
-    -fx-border-width: 2;
-    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.15), 2, 0, 0, 1);
-}
-
-.spinner:focused {
-    -fx-border-color: #a0522d; /* sienna */
-    -fx-effect: dropshadow(one-pass-box, rgba(160, 82, 45, 0.4), 4, 0, 0, 1);
-}
-
-.spinner .text-field {
-    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
-    -fx-font-weight: bold;
-    -fx-text-fill: #654321; /* dark brown */
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-}
-
-.spinner .increment-arrow-button,
-.spinner .decrement-arrow-button {
-    -fx-background-color: #8b4513; /* saddle brown */
-    -fx-background-radius: 0;
-}
-
-.spinner .increment-arrow-button:hover,
-.spinner .decrement-arrow-button:hover {
-    -fx-background-color: #a0522d; /* sienna */
-}
-
-.spinner .increment-arrow,
-.spinner .decrement-arrow {
-    -fx-background-color: #f5deb3; /* wheat */
 }
 
 /* Separator styling */
 .separator .line {
-    -fx-border-color: rgba(11, 43, 38, 0.3);
+    -fx-border-color: rgba(139, 69, 19, 0.3); /* saddle brown with transparency */
     -fx-border-width: 1 0 0 0;
     -fx-border-style: solid;
 }
@@ -221,20 +167,31 @@
     -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.4), 4, 0, 0, 1);
 }
 
-#addBtn {
+/* Confirm button - brown theme */
+#confirmBtn {
     -fx-background-color: linear-gradient(to bottom, #8B5E3C, #7B4C2A); /* base brown */
 }
 
-#addBtn:hover {
+#confirmBtn:hover {
     -fx-background-color: linear-gradient(to bottom, #A97461, #8B5E3C); /* lighter hover */
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.35), 6, 0, 0, 3);
 }
 
-#addBtn:pressed {
+#confirmBtn:pressed {
     -fx-background-color: linear-gradient(to bottom, #6B3F24, #5A2E18); /* darker pressed */
     -fx-scale-x: 0.95;
     -fx-scale-y: 0.95;
     -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.4), 4, 0, 0, 1);
+}
+
+/* VBox and HBox styling for better visual hierarchy */
+.vbox {
+    -fx-background-color: rgba(245, 245, 220, 0.1); /* very light beige with transparency */
+    -fx-background-radius: 10;
+}
+
+.hbox {
+    -fx-alignment: center-left;
 }

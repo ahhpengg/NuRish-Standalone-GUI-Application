@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="360" prefWidth="520" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.AddMealDialogController">
+<BorderPane fx:id="addMealPane" prefHeight="360" prefWidth="520" stylesheets="@AddMealDialog.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.AddMealDialogController">
 
     <center>
         <VBox spacing="10">
@@ -42,8 +42,8 @@
     <bottom>
         <HBox alignment="CENTER_RIGHT" spacing="10">
             <padding><Insets bottom="14" left="16" right="16" top="10" /></padding>
-            <Button onAction="#handleCancel" text="Cancel" />
-            <Button onAction="#handleConfirm" text="Confirm" />
+            <Button fx:id="cancelBtn" onAction="#handleCancel" text="Cancel" />
+            <Button fx:id="confirmBtn" onAction="#handleConfirm" text="Confirm" />
         </HBox>
     </bottom>
 </BorderPane>
