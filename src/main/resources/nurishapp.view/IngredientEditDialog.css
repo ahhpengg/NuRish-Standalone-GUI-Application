@@ -1,0 +1,192 @@
+.root {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+}
+
+/* BorderPane background with image */
+#ingredientEditPane {
+    -fx-background-image: url("/images/ingredient_edit_dialog_bg.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+
+/* Label styling */
+.label {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #654321; /* dark brown */
+    -fx-font-size: 14px;
+}
+
+/* Field labels (Category:, Food:, Serving:) */
+#categoryLabel, #foodLabel {
+    -fx-font-weight: 900;
+    -fx-text-fill: #3e2723; /* very dark brown */
+    -fx-min-width: 120;
+}
+
+#servingLabel {
+    -fx-font-weight: 900;
+    -fx-text-fill: #3e2723;
+    -fx-min-width: 120;
+}
+
+/* Section header label */
+#npsLabel {
+    -fx-font-weight: 900;
+    -fx-font-size: 15px;
+    -fx-text-fill: #3e2723;
+}
+
+/* Nutrition display label */
+#nutritionPerServingLabel {
+    -fx-font-size: 13px;
+    -fx-text-fill: #654321;
+    -fx-background-color: rgba(245, 222, 179, 0.9); /* wheat with transparency */
+    -fx-background-radius: 6;
+    -fx-padding: 8 12 8 12;
+    -fx-border-color: rgba(139, 69, 19, 0.4);
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+}
+
+/* Serving unit label */
+#servingUnitValue {
+    -fx-font-size: 14px;
+    -fx-text-fill: #654321;
+    -fx-font-style: italic;
+}
+
+/* ComboBox styling - Brown theme */
+.combo-box {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-background-color: #f5deb3; /* wheat */
+    -fx-border-color: #8b4513; /* saddle brown */
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.15), 2, 0, 0, 1);
+}
+
+.combo-box:focused {
+    -fx-border-color: #a0522d; /* sienna */
+    -fx-effect: dropshadow(one-pass-box, rgba(160, 82, 45, 0.4), 4, 0, 0, 1);
+}
+
+.combo-box .text-input {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #654321; /* dark brown */
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: #8b4513; /* saddle brown */
+    -fx-background-radius: 0 6 6 0;
+}
+
+.combo-box .arrow-button .arrow {
+    -fx-background-color: #f5deb3; /* wheat */
+}
+
+.combo-box .arrow-button:hover {
+    -fx-background-color: #a0522d; /* sienna */
+}
+
+/* Spinner styling - Brown theme */
+.spinner {
+    -fx-background-color: #f5deb3; /* wheat */
+    -fx-border-color: #8b4513; /* saddle brown */
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.15), 2, 0, 0, 1);
+}
+
+.spinner:focused {
+    -fx-border-color: #a0522d; /* sienna */
+    -fx-effect: dropshadow(one-pass-box, rgba(160, 82, 45, 0.4), 4, 0, 0, 1);
+}
+
+.spinner .text-field {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #654321; /* dark brown */
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-color: #8b4513; /* saddle brown */
+    -fx-background-radius: 0;
+}
+
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    -fx-background-color: #a0522d; /* sienna */
+}
+
+.spinner .increment-arrow,
+.spinner .decrement-arrow {
+    -fx-background-color: #f5deb3; /* wheat */
+}
+
+/* Separator styling */
+.separator .line {
+    -fx-border-color: rgba(11, 43, 38, 0.3);
+    -fx-border-width: 1 0 0 0;
+    -fx-border-style: solid;
+}
+
+/* Button base styling */
+.button {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 10 20 10 20;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 4, 0, 0, 2);
+    -fx-min-width: 80;
+}
+
+/* Cancel button - gray theme */
+#cancelBtn {
+    -fx-background-color: linear-gradient(to bottom, #95a5a6, #7f8c8d);
+}
+
+#cancelBtn:hover {
+    -fx-background-color: linear-gradient(to bottom, #b2babb, #95a5a6);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.35), 6, 0, 0, 3);
+}
+
+#cancelBtn:pressed {
+    -fx-background-color: linear-gradient(to bottom, #7f8c8d, #566573);
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.4), 4, 0, 0, 1);
+}
+
+#addBtn {
+    -fx-background-color: linear-gradient(to bottom, #8B5E3C, #7B4C2A); /* base brown */
+}
+
+#addBtn:hover {
+    -fx-background-color: linear-gradient(to bottom, #A97461, #8B5E3C); /* lighter hover */
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.35), 6, 0, 0, 3);
+}
+
+#addBtn:pressed {
+    -fx-background-color: linear-gradient(to bottom, #6B3F24, #5A2E18); /* darker pressed */
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.4), 4, 0, 0, 1);
+}

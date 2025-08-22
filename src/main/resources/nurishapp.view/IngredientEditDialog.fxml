@@ -10,25 +10,25 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="360" prefWidth="520" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.IngredientEditDialogController">
+<BorderPane fx:id="ingredientEditPane" prefHeight="360" prefWidth="520" stylesheets="@IngredientEditDialog.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.IngredientEditDialogController">
 
     <center>
         <VBox spacing="10">
             <padding><Insets bottom="14" left="16" right="16" top="14" /></padding>
 
             <HBox alignment="CENTER_LEFT" spacing="10">
-                <Label minWidth="120" text="Category:" />
+                <Label fx:id="categoryLabel" minWidth="120" text="Category:" />
                 <ComboBox fx:id="categoryBox" prefWidth="300" />
             </HBox>
 
             <HBox alignment="CENTER_LEFT" spacing="10">
-                <Label minWidth="120" text="Food:" />
+                <Label fx:id="foodLabel" minWidth="120" text="Food:" />
                 <ComboBox fx:id="foodBox" editable="true" prefWidth="300" />
             </HBox>
 
             <Separator />
 
-            <Label style="-fx-font-weight:bold;" text="Nutrition per serving:" />
+            <Label fx:id="npsLabel" style="-fx-font-weight:bold;" text="Nutrition per serving:" />
             <Label fx:id="nutritionPerServingLabel" text="-" />
 
             <HBox alignment="CENTER_LEFT" spacing="10">

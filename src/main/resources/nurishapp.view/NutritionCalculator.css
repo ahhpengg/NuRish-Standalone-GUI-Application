@@ -1,4 +1,3 @@
-/* Global font styling - Comic Sans MS and bold for all text */
 .root {
     -fx-font-family: "Comic Sans MS", cursive, sans-serif;
     -fx-font-weight: bold;
