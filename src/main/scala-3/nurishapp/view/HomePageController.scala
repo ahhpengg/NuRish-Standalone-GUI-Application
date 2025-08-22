@@ -97,4 +97,13 @@ class HomePageController {
       println("RootLayoutController not set in HomePageController")
     }
   }
+
+  @FXML
+  def handleNutritionCalculator(): Unit = {
+    if (rootController != null) {
+      rootController.setCenterPage("/nurishapp.view/NutritionCalculator.fxml")
+    } else {
+      println("RootLayoutController not set in HomePageController")
+    }
+  }
 }
