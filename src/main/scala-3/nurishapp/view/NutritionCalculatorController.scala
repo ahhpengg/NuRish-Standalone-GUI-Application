@@ -90,10 +90,10 @@ class NutritionCalculatorController {
     val totF   = ingredients.map(_.totalFat).sum
 
     totalsTitle.setText("Total nutrition")
-    totalCaloriesLabel.setText(f"Calories: $totCal%.0f kcal")
-    totalCarbsLabel.setText(f"Carbs: $totC%.1f g")
-    totalProteinLabel.setText(f"Protein: $totP%.1f g")
-    totalFatLabel.setText(f"Fat: $totF%.1f g")
+    totalCaloriesLabel.setText(f"✔ Calories: $totCal%.0f kcal")
+    totalCarbsLabel.setText(f"✔ Carbs: $totC%.1f g")
+    totalProteinLabel.setText(f"✔ Protein: $totP%.1f g")
+    totalFatLabel.setText(f"✔ Fat: $totF%.1f g")
 
     val data = FXCollections.observableArrayList[PieChart.Data](
       new PieChart.Data("Carbs",   Math.max(totC, 0.0)),

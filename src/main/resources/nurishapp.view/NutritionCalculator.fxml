@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="root" prefHeight="620" prefWidth="860" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.NutritionCalculatorController">
+<BorderPane fx:id="root" prefHeight="620" prefWidth="860" stylesheets="@NutritionCalculator.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.NutritionCalculatorController">
 
     <top>
         <VBox alignment="CENTER" spacing="8">
             <padding><Insets bottom="12" left="18" right="18" top="18" /></padding>
-            <Label style="-fx-font-size:22px; -fx-font-weight:bold;" text="Nutrition Calculator" />
-            <Label style="-fx-font-size:13px;" text="Calculate nutrition in your diet!" />
+            <Label fx:id="titleLabel" style="-fx-font-size:24px; -fx-font-weight:bold;" text="Nutrition Calculator" />
+            <Label fx:id="descriptionLabel" style="-fx-font-size:16px;" text="Calculate nutrition in your diet!" />
         </VBox>
     </top>
 
@@ -26,7 +26,7 @@
 
             <!-- Ingredients header -->
             <HBox alignment="CENTER_LEFT" spacing="8">
-                <Label style="-fx-font-size:14px; -fx-font-weight:bold;" text="Ingredients:" />
+                <Label fx:id="ingredientsLabel" style="-fx-font-size:14px; -fx-font-weight:bold;" text="Ingredients:" />
                 <Button fx:id="addIngredientBtn" onAction="#handleAddIngredient" text="+ Add" />
                 <Button fx:id="removeLastBtn" onAction="#handleRemoveLast" text="Remove last" />
                 <Region HBox.hgrow="ALWAYS" />
@@ -34,7 +34,7 @@
             </HBox>
 
             <!-- Ingredients list -->
-            <ScrollPane fitToWidth="true" minHeight="-Infinity" prefHeight="80.0" style="-fx-background-color:transparent;">
+            <ScrollPane fitToWidth="true" minHeight="-Infinity" prefHeight="120.0" style="-fx-background-color:transparent;">
                 <content>
                     <VBox fx:id="ingredientsBox" spacing="8" />
                 </content>
@@ -49,26 +49,26 @@
     </center>
 
     <bottom>
-        <VBox fx:id="resultsPane" spacing="10" visible="false">
+        <VBox fx:id="resultsPane" visible="false">
             <padding><Insets bottom="18" left="18" right="18" top="10" /></padding>
 
             <HBox alignment="CENTER_LEFT" spacing="18">
                 <VBox spacing="6">
-                    <Label fx:id="totalsTitle" style="-fx-font-size:16px; -fx-font-weight:bold;" />
+                    <Label fx:id="totalsTitle" style="-fx-font-weight:bold;" />
                     <Label fx:id="totalCaloriesLabel" />
                     <Label fx:id="totalCarbsLabel" />
                     <Label fx:id="totalProteinLabel" />
                     <Label fx:id="totalFatLabel" />
+                   <Label fx:id="addthisLabel" style="-fx-font-size:13px;" text="☘ Add this delicious meal into your account!" />
+         
+                                             <HBox alignment="BOTTOM_LEFT" spacing="10">
+                      <Button fx:id="addMealBtn" onAction="#handleAddMeal" text="Add to My Foods" />
+                      <Button fx:id="nextBtn" onAction="#handleResetForNext" text="Calculate next one" />
+                  </HBox>
                 </VBox>
 
                 <Region HBox.hgrow="ALWAYS" />
-                <PieChart fx:id="macroChart" prefHeight="240" prefWidth="320" />
-            </HBox>
-
-            <HBox alignment="CENTER_LEFT" spacing="10">
-                <Label style="-fx-font-size:13px;" text="Add this delicious meal into your account!" />
-                <Button fx:id="addMealBtn" onAction="#handleAddMeal" text="Add to My Foods" />
-                <Button fx:id="nextBtn" onAction="#handleResetForNext" text="Calculate next one" />
+                <PieChart fx:id="macroChart" legendSide="TOP" prefHeight="240" prefWidth="320" />
             </HBox>
         </VBox>
     </bottom>
