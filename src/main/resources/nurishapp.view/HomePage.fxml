@@ -23,7 +23,7 @@
               <Button onAction="#handleMealPlanner" prefWidth="220.0" text="Personalized Meal Planner" />
               <Button onAction="#handleFoodSearch" prefWidth="220.0" text="Food Search" />
               <Button onAction="#handleNutritionCalculator" prefWidth="220.0" text="Nutrition Calculator" />
-              <Button prefWidth="220.0" text="Food Aid Program" />
+              <Button onAction="#handleFoodAidProgram" prefWidth="220.0" text="Food Aid Program" />
               <Button onAction="#handleQuit" prefWidth="220.0" text="Quit Program" />
           </children>
       <StackPane.margin>

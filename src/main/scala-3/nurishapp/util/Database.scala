@@ -1,6 +1,6 @@
 package nurishapp.util
 import scalikejdbc.*
-import nurishapp.model.{User, Food, Diet, FoodDiet}
+import nurishapp.model.{Diet, Food, FoodAidApplication, FoodDiet, User}
 
 trait Database {
   val derbyDriverClassname = "org.apache.derby.jdbc.EmbeddedDriver"
@@ -33,6 +33,9 @@ object Database extends Database {
 
     if (!hasTable("food_diets"))
       FoodDiet.initializeTable()
+
+    if (!hasTable("food_aid_applications"))
+      FoodAidApplication.initializeTable()  
   }
 }
 

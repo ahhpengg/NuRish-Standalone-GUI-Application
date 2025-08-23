@@ -36,78 +36,52 @@ class SignupController {
 
   @FXML
   private def initialize(): Unit = {
-
     val imageUrl = getClass.getResource("/images/nurish_signup.png")
     signupImage.setImage(new Image(imageUrl.toString))
     signupImage.fitWidthProperty().bind(imageContainer.widthProperty())
     signupImage.fitHeightProperty().bind(imageContainer.heightProperty())
 
-    // Add listeners for real-time validation
-    usernameField.textProperty().addListener((_, _, newValue) => validateUsername(newValue))
-    emailField.textProperty().addListener((_, _, newValue) => validateEmail(newValue))
-    passwordField.textProperty().addListener((_, _, newValue) => validatePassword(newValue))
+    // Realtime validation (only one field at a time shown on messageLabel)
+    usernameField.textProperty().addListener((_, _, newValue) =>
+      messageLabel.setText(validateUsername(newValue).getOrElse(""))
+    )
+    emailField.textProperty().addListener((_, _, newValue) =>
+      messageLabel.setText(validateEmail(newValue).getOrElse(""))
+    )
+    passwordField.textProperty().addListener((_, _, newValue) =>
+      messageLabel.setText(validatePassword(newValue).getOrElse(""))
+    )
   }
 
-  private def validateUsername(username: String): Boolean = {
-    if (username.isEmpty) {
-      messageLabel.setText("Username cannot be empty")
-      false
-    } else if (!username.matches("^[a-zA-Z0-9_]{3,20}$")) {
-      messageLabel.setText("Username must be 3-20 characters long and contain only letters, numbers, and underscores")
-      false
-    } else {
-      messageLabel.setText("")
-      true
+  // Return Option[String] instead of Boolean
+  private def validateUsername(username: String): Option[String] = {
+    if (username.isEmpty) Some("Username cannot be empty")
+    else if (!username.matches("^[a-zA-Z0-9_]{3,20}$"))
+      Some("Username must be 3–20 characters long and contain only letters, numbers, and underscores")
+    else None
+  }
+
+  private def validateEmail(email: String): Option[String] = {
+    if (email.isEmpty) Some("Email cannot be empty")
+    else if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$"))
+      Some("Please enter a valid email address")
+    else None
+  }
+
+  private def validatePassword(password: String): Option[String] = {
+    if (password.isEmpty) Some("Password cannot be empty")
+    else if (password.length < 8) Some("Password must be at least 8 characters long")
+    else {
+      val missing = collection.mutable.ListBuffer[String]()
+      if (!password.matches(".*[A-Z].*")) missing += "uppercase letter"
+      if (!password.matches(".*[a-z].*")) missing += "lowercase letter"
+      if (!password.matches(".*[0-9].*")) missing += "number"
+
+      if (missing.nonEmpty)
+        Some(s"Password must contain at least one ${missing.mkString(", ")}")
+      else None
     }
   }
-
-  private def validateEmail(email: String): Boolean = {
-    if (email.isEmpty) {
-      messageLabel.setText("Email cannot be empty")
-      false
-    } else if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
-      messageLabel.setText("Please enter a valid email address")
-      false
-    } else {
-      messageLabel.setText("")
-      true
-    }
-  }
-
-  private def validatePassword(password: String): Boolean = {
-    if (password.isEmpty) {
-      messageLabel.setText("Password cannot be empty")
-      false
-    } else if (password.length < 8) {
-      messageLabel.setText("Password must be at least 8 characters long")
-      false
-    } else {
-      // Check all conditions at once
-      val missingRequirements = new StringBuilder()
-
-      if (!password.matches(".*[A-Z].*"))
-        missingRequirements.append("uppercase letter")
-
-      if (!password.matches(".*[a-z].*")) {
-        if (missingRequirements.nonEmpty) missingRequirements.append(", ")
-        missingRequirements.append("lowercase letter")
-      }
-
-      if (!password.matches(".*[0-9].*")) {
-        if (missingRequirements.nonEmpty) missingRequirements.append(", ")
-        missingRequirements.append("number")
-      }
-
-      if (missingRequirements.nonEmpty) {
-        messageLabel.setText(s"Password must contain at least one ${missingRequirements.toString}")
-        false
-      } else {
-        messageLabel.setText("")
-        true
-      }
-    }
-  }
-
 
   @FXML
   private def handleSignUp(): Unit = {
@@ -116,41 +90,28 @@ class SignupController {
     val password = passwordField.getText
     val confirmPassword = confirmPasswordField.getText
 
-    var errorMessage = StringBuilder()
+    val errorMessages = collection.mutable.ListBuffer[String]()
 
-    // Validate username and add specific error message
-    if (!validateUsername(username)) {
-      errorMessage.append("• " + messageLabel.getText + "\n")  // Add bullet point
-    }
+    validateUsername(username).foreach(err => errorMessages += err)
+    validateEmail(email).foreach(err => errorMessages += err)
+    validatePassword(password).foreach(err => errorMessages += err)
 
-    // Validate email and add specific error message
-    if (!validateEmail(email)) {
-      errorMessage.append("• " + messageLabel.getText + "\n")
-    }
-
-    // Validate password and add specific error message
-    if (!validatePassword(password)) {
-      errorMessage.append("• " + messageLabel.getText + "\n")
-    }
-
-    // Check password confirmation
     if (password != confirmPassword) {
-      errorMessage.append("• Passwords do not match\n")
+      errorMessages += "Passwords do not match"
     }
 
-    // Get the current window safely
     val currentWindow = Option(stage)
       .orElse(Option(signupPane).map(_.getScene.getWindow))
       .getOrElse(throw new RuntimeException("Unable to get current window"))
 
-    // Show validation errors if any
-    if (errorMessage.nonEmpty) {
-      val alert = new Alert(Alert.AlertType.Error):
+    if (errorMessages.nonEmpty) {
+      val alert = new Alert(Alert.AlertType.Error) {
         initOwner(currentWindow)
         title = "Sign Up Error"
         headerText = "Please correct the following errors:"
-        contentText = errorMessage.toString
+        contentText = errorMessages.map("• " + _).mkString("\n")
         resizable = true
+      }
 
       val dialogPane = alert.getDialogPane
       dialogPane.setPrefWidth(550)

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="360" prefWidth="520" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.FoodAidSignUpDialogController">
+
+    <center>
+        <VBox spacing="12">
+            <padding><Insets topRightBottomLeft="18" /></padding>
+
+            <GridPane hgap="12" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="160" />
+                    <ColumnConstraints hgrow="ALWAYS" minWidth="260" />
+                </columnConstraints>
+
+                <Label text="Full Name (as IC):" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextField fx:id="fullNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <Label text="IC Number (12 digits):" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <TextField fx:id="icNumberField" promptText="e.g. 010203041234" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label text="Gender:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <ComboBox fx:id="genderBox" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                <Label text="Date of Birth (YYYY-MM-DD):" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <TextField fx:id="dobField" promptText="YYYY-MM-DD" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                <Label text="Contact Number:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                <TextField fx:id="contactField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
+            </GridPane>
+         <Label fx:id="messageLabel" />
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <padding><Insets topRightBottomLeft="12" /></padding>
+            <Button fx:id="confirmBtn" defaultButton="true" onAction="#handleConfirm" text="Confirm" />
+            <Button fx:id="cancelBtn" cancelButton="true" onAction="#handleCancel" text="Cancel" />
+        </HBox>
+    </bottom>
+</BorderPane>

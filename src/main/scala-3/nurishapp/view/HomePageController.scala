@@ -110,6 +110,15 @@ class HomePageController {
   }
   
   @FXML
+  def handleFoodAidProgram(): Unit = {
+    if (rootController != null) {
+      rootController.setCenterPage("/nurishapp.view/FoodAidProgram.fxml")
+    } else {
+      println("RootLayoutController not set in HomePageController")
+    }
+  }
+  
+  @FXML
   def handleQuit(): Unit = {
     // Show confirmation dialog
     val alert = new Alert(AlertType.CONFIRMATION)
