@@ -1,14 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="nurishapp.view.ProfileController"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane prefHeight="720.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.ProfileController">
 
-</AnchorPane>
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="12">
+            <padding><Insets topRightBottomLeft="18" /></padding>
+
+            <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Profile" />
+              <ImageView fx:id="profileIcon" fitHeight="140" fitWidth="140" pickOnBounds="true" preserveRatio="true" />
+
+            <!-- User Info -->
+            <GridPane alignment="CENTER" hgap="12" vgap="8">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="120" />
+                    <ColumnConstraints hgrow="ALWAYS" minWidth="320" />
+                </columnConstraints>
+
+                <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <Label fx:id="usernameValue" text="-" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <Label fx:id="emailValue" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label text="Created at:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <Label fx:id="createdAtValue" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
+            </GridPane>
+
+            <HBox alignment="CENTER" spacing="10">
+                <Button fx:id="editInfoBtn" onAction="#openEditInfoDialog" text="Edit Info" />
+                <Button fx:id="changePasswordBtn" onAction="#openChangePasswordDialog" text="Change Password" />
+            </HBox>
+
+            <Separator prefWidth="700" />
+
+            <!-- My Recipes -->
+            <VBox alignment="TOP_CENTER" prefWidth="700" spacing="8">
+                <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="My Recipes" />
+                <ScrollPane fitToWidth="true" prefViewportHeight="240">
+                    <VBox fx:id="recipesBox" spacing="6">
+                        <padding>
+                            <Insets topRightBottomLeft="10" />
+                        </padding>
+                    </VBox>
+                </ScrollPane>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

@@ -8,8 +8,9 @@ import javafx.stage.Stage
 import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
 import javafx.scene.layout.AnchorPane
-import nurishapp.util.AuthenticationUtil
+import nurishapp.util.{AuthenticationUtil, ValidationUtil}
 import nurishapp.model.User
+
 import scala.util.{Failure, Success, Try}
 import scalafx.scene.control.Alert
 
@@ -43,44 +44,14 @@ class SignupController {
 
     // Realtime validation (only one field at a time shown on messageLabel)
     usernameField.textProperty().addListener((_, _, newValue) =>
-      messageLabel.setText(validateUsername(newValue).getOrElse(""))
+      messageLabel.setText(ValidationUtil.validateUsername(newValue).getOrElse(""))
     )
     emailField.textProperty().addListener((_, _, newValue) =>
-      messageLabel.setText(validateEmail(newValue).getOrElse(""))
+      messageLabel.setText(ValidationUtil.validateEmail(newValue).getOrElse(""))
     )
     passwordField.textProperty().addListener((_, _, newValue) =>
-      messageLabel.setText(validatePassword(newValue).getOrElse(""))
+      messageLabel.setText(ValidationUtil.validatePassword(newValue).getOrElse(""))
     )
-  }
-
-  // Return Option[String] instead of Boolean
-  private def validateUsername(username: String): Option[String] = {
-    if (username.isEmpty) Some("Username cannot be empty")
-    else if (!username.matches("^[a-zA-Z0-9_]{3,20}$"))
-      Some("Username must be 3–20 characters long and contain only letters, numbers, and underscores")
-    else None
-  }
-
-  private def validateEmail(email: String): Option[String] = {
-    if (email.isEmpty) Some("Email cannot be empty")
-    else if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$"))
-      Some("Please enter a valid email address")
-    else None
-  }
-
-  private def validatePassword(password: String): Option[String] = {
-    if (password.isEmpty) Some("Password cannot be empty")
-    else if (password.length < 8) Some("Password must be at least 8 characters long")
-    else {
-      val missing = collection.mutable.ListBuffer[String]()
-      if (!password.matches(".*[A-Z].*")) missing += "uppercase letter"
-      if (!password.matches(".*[a-z].*")) missing += "lowercase letter"
-      if (!password.matches(".*[0-9].*")) missing += "number"
-
-      if (missing.nonEmpty)
-        Some(s"Password must contain at least one ${missing.mkString(", ")}")
-      else None
-    }
   }
 
   @FXML
@@ -92,9 +63,9 @@ class SignupController {
 
     val errorMessages = collection.mutable.ListBuffer[String]()
 
-    validateUsername(username).foreach(err => errorMessages += err)
-    validateEmail(email).foreach(err => errorMessages += err)
-    validatePassword(password).foreach(err => errorMessages += err)
+    ValidationUtil.validateUsername(username).foreach(err => errorMessages += err)
+    ValidationUtil.validateEmail(email).foreach(err => errorMessages += err)
+    ValidationUtil.validatePassword(password).foreach(err => errorMessages += err)
 
     if (password != confirmPassword) {
       errorMessages += "Passwords do not match"

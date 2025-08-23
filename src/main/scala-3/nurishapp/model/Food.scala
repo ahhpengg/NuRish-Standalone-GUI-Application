@@ -83,5 +83,15 @@ object Food extends Database {
   def delete(id: Int)(implicit session: DBSession = AutoSession): Boolean = {
     sql"DELETE FROM foods WHERE id = $id".update.apply() > 0
   }
+
+  def update(food: Food)(implicit session: DBSession = AutoSession): Food = {
+    sql"""
+      UPDATE foods SET name = ${food.nameS}, category = ${food.categoryS}, serving_unit = ${food.servingUnitS},
+        calories = ${food.calories}, carbs = ${food.carbs}, protein = ${food.protein}, fat = ${food.fat},
+        preferred_meal = ${food.preferredMealS}, recipes_by_user_id = ${food.recipesByUserId}
+      WHERE id = ${food.id.get}
+    """.update.apply()
+    food
+  }
 }
 
