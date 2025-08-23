@@ -6,7 +6,7 @@
 /* BorderPane background with image or solid color */
 #foodAidProgramPane {
     -fx-background-image: url("/images/food_aid_program_bg.png");
-    -fx-background-size: cover;
+    -fx-background-size: stretch;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
     /* Fallback solid color if no background image */

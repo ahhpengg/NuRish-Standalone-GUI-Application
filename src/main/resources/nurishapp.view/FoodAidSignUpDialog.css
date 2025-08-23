@@ -1,0 +1,213 @@
+.root {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+}
+
+/* BorderPane background with image or solid color */
+#programSignupPane {
+    -fx-background-image: url("/images/food_aid_signup_dialog_bg.png");
+    -fx-background-size: stretch;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    /* Fallback solid color if no background image */
+    -fx-background-color: #f5f5dc; /* beige */
+}
+
+/* VBox container styling */
+.vbox {
+    -fx-background-color: rgba(245, 245, 220, 0.1); /* very light beige with transparency */
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.08), 6, 0, 0, 2);
+}
+
+/* GridPane styling */
+.grid-pane {
+    -fx-background-color: rgba(245, 222, 179, 0.4); /* wheat with transparency */
+    -fx-background-radius: 10;
+    -fx-padding: 16;
+    -fx-border-color: rgba(139, 69, 19, 0.15);
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.1), 4, 0, 0, 2);
+}
+
+/* Label base styling */
+.label {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #654321; /* dark brown */
+    -fx-font-size: 14px;
+}
+
+/* Form field labels */
+.grid-pane .label {
+    -fx-font-weight: 900;
+    -fx-text-fill: #3e2723; /* very dark brown */
+    -fx-font-size: 14px;
+    -fx-wrap-text: true;
+    -fx-alignment: center-left;
+}
+
+/* TextField styling - Brown theme */
+.text-field {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-background-color: #f5deb3; /* wheat */
+    -fx-border-color: #8b4513; /* saddle brown */
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-border-width: 2;
+    -fx-text-fill: #654321; /* dark brown */
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.15), 2, 0, 0, 1);
+    -fx-padding: 8 12 8 12;
+    -fx-pref-height: 32;
+}
+
+.text-field:focused {
+    -fx-border-color: #a0522d; /* sienna */
+    -fx-effect: dropshadow(one-pass-box, rgba(160, 82, 45, 0.4), 4, 0, 0, 1);
+}
+
+.text-field .prompt-text {
+    -fx-text-fill: rgba(101, 67, 33, 0.6); /* dark brown with transparency */
+    -fx-font-style: italic;
+}
+
+/* ComboBox styling - Brown theme */
+.combo-box {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-background-color: #f5deb3; /* wheat */
+    -fx-border-color: #8b4513; /* saddle brown */
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.15), 2, 0, 0, 1);
+    -fx-pref-height: 32;
+}
+
+.combo-box:focused {
+    -fx-border-color: #a0522d; /* sienna */
+    -fx-effect: dropshadow(one-pass-box, rgba(160, 82, 45, 0.4), 4, 0, 0, 1);
+}
+
+.combo-box .text-input {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #654321; /* dark brown */
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: #8b4513; /* saddle brown */
+    -fx-background-radius: 0 6 6 0;
+}
+
+.combo-box .arrow-button .arrow {
+    -fx-background-color: #f5deb3; /* wheat */
+}
+
+.combo-box .arrow-button:hover {
+    -fx-background-color: #a0522d; /* sienna */
+}
+
+/* ComboBox dropdown styling */
+.combo-box-popup .list-view {
+    -fx-background-color: #f5deb3; /* wheat */
+    -fx-border-color: #8b4513; /* saddle brown */
+    -fx-border-width: 2;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 6, 0, 0, 3);
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #654321; /* dark brown */
+    -fx-background-color: #f5deb3; /* wheat - explicit background */
+}
+
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: #deb887; /* burlywood for hover */
+    -fx-text-fill: #3e2723; /* very dark brown */
+}
+
+.combo-box-popup .list-view .list-cell:selected {
+    -fx-background-color: #d2b48c; /* tan for selected */
+    -fx-text-fill: #3e2723; /* very dark brown */
+}
+
+.combo-box-popup .list-view .list-cell:filled:selected:focused {
+    -fx-background-color: #cd853f; /* peru for focused selected */
+    -fx-text-fill: white;
+}
+
+/* Additional ComboBox popup styling to ensure consistent background */
+.combo-box-popup {
+    -fx-background-color: #f5deb3; /* wheat */
+    -fx-background-radius: 6;
+    -fx-border-color: #8b4513; /* saddle brown */
+    -fx-border-width: 2;
+    -fx-border-radius: 6;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 6, 0, 0, 3);
+}
+
+/* Button base styling */
+.button {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 10 20 10 20;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 4, 0, 0, 2);
+    -fx-min-width: 80;
+    -fx-pref-height: 36;
+}
+
+/* Confirm button - brown theme */
+#confirmBtn {
+    -fx-background-color: linear-gradient(to bottom, #8B5E3C, #7B4C2A); /* base brown */
+}
+
+#confirmBtn:hover {
+    -fx-background-color: linear-gradient(to bottom, #A97461, #8B5E3C); /* lighter hover */
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.35), 6, 0, 0, 3);
+}
+
+#confirmBtn:pressed {
+    -fx-background-color: linear-gradient(to bottom, #6B3F24, #5A2E18); /* darker pressed */
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.4), 4, 0, 0, 1);
+}
+
+/* Cancel button - gray theme */
+#cancelBtn {
+    -fx-background-color: linear-gradient(to bottom, #95a5a6, #7f8c8d);
+}
+
+#cancelBtn:hover {
+    -fx-background-color: linear-gradient(to bottom, #b2babb, #95a5a6);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.35), 6, 0, 0, 3);
+}
+
+#cancelBtn:pressed {
+    -fx-background-color: linear-gradient(to bottom, #7f8c8d, #566573);
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.4), 4, 0, 0, 1);
+}
+
+/* HBox styling for button container */
+.hbox {
+    -fx-alignment: center-right;
+    -fx-background-color: rgba(245, 245, 220, 0.05); /* very subtle background */
+    -fx-background-radius: 8;
+}
