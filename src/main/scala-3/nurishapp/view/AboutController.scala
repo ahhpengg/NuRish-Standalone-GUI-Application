@@ -29,7 +29,7 @@ class AboutController {
   @FXML
   private def initialize(): Unit = {
     // Load the background image
-    val imageUrl = getClass.getResource("/images/about_us.png")
+    val imageUrl = getClass.getResource("/images/about_us_bg.png")
     if (imageUrl != null) {
       aboutBg.setImage(new Image(imageUrl.toString))
     }
