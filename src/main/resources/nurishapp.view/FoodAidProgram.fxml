@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="570.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.FoodAidProgramController">
+<BorderPane fx:id="foodAidProgramPane" prefHeight="570.0" prefWidth="820.0" stylesheets="@FoodAidProgram.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.FoodAidProgramController">
 
     <center>
         <VBox alignment="TOP_CENTER" spacing="10">
@@ -22,18 +22,18 @@
             <Label fx:id="titleLabel" style="-fx-font-size: 22; -fx-font-weight: bold;" text="Food Aid Program" />
 
             <!-- Subtitle -->
-            <Label style="-fx-font-size: 13; -fx-text-fill: #666;" text="support to those who need it the most" />
+            <Label fx:id="descriptionLabel" style="-fx-font-size: 13; -fx-text-fill: #666;" text="support to those who need it the most" />
 
             <!-- Program name by org -->
-            <Label fx:id="programByOrgLabel" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333;" text="(Program Name) by (Organization)" />
+            <Label fx:id="programByOrgLabel" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #333;" text="(Program Name) by (Organization)" />
 
             <!-- Poster (click to preview/zoom) -->
-            <StackPane fx:id="imageContainer" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="300.0">
+            <StackPane fx:id="imageContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#openPosterPreview" prefHeight="290.0" prefWidth="500.0">
                 <ImageView fx:id="posterImage" onMouseClicked="#openPosterPreview" pickOnBounds="true" preserveRatio="true" />
             </StackPane>
 
             <!-- Details -->
-            <GridPane hgap="40" vgap="8">
+            <GridPane alignment="CENTER" hgap="40" vgap="8">
                 <columnConstraints>
                     <ColumnConstraints minWidth="100" />
                     <ColumnConstraints minWidth="220" />
