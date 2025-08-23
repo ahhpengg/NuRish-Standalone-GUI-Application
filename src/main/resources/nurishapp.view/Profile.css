@@ -1,0 +1,268 @@
+.root {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+}
+
+/* BorderPane background with resizable image bound to pane */
+#profilePane {
+    -fx-background-image: url("/images/profile_bg.png");
+    -fx-background-size: stretch; /* Makes image resize with pane */
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+    /* Fallback solid color if no background image */
+    -fx-background-color: #f5f5dc; /* beige */
+}
+
+/* Label base styling */
+.label {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #654321; /* dark brown */
+    -fx-font-size: 14px;
+}
+
+/* Profile title label */
+.label[style*="font-size: 24px"] {
+    -fx-font-size: 24px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #5A2E18; /* darker brown - consistent with menu bar */
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 1);
+}
+
+/* Section title label (My Recipes) */
+.label[style*="font-size: 16px"] {
+    -fx-font-size: 16px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #5A2E18; /* darker brown */
+    -fx-background-color: rgba(245, 222, 179, 0.8); /* wheat with transparency */
+    -fx-background-radius: 8;
+    -fx-padding: 6 12 6 12;
+    -fx-border-color: rgba(90, 46, 24, 0.3);
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.15), 3, 0, 0, 1);
+}
+
+/* Profile icon styling */
+#profileIcon {
+    -fx-background-color: #f5deb3; /* wheat */
+    -fx-background-radius: 70; /* circular */
+    -fx-border-color: #8b4513; /* saddle brown */
+    -fx-border-width: 4;
+    -fx-border-radius: 70; /* circular */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 8, 0, 0, 4);
+    -fx-cursor: hand;
+}
+
+#profileIcon:hover {
+    -fx-border-color: #a0522d; /* sienna */
+    -fx-effect: dropshadow(three-pass-box, rgba(160, 82, 45, 0.4), 10, 0, 0, 5);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* GridPane styling for user info */
+.grid-pane {
+    -fx-background-color: rgba(245, 222, 179, 0.6); /* wheat with transparency */
+    -fx-background-radius: 12;
+    -fx-padding: 20;
+    -fx-border-color: rgba(139, 69, 19, 0.2);
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.1), 6, 0, 0, 3);
+}
+
+/* Field labels (Username:, Email:, Created at:) */
+.grid-pane .label[text="Username:"],
+.grid-pane .label[text="Email:"],
+.grid-pane .label[text="Created at:"] {
+    -fx-font-weight: 900;
+    -fx-text-fill: #5A2E18; /* darker brown */
+    -fx-font-size: 15px;
+}
+
+/* Value labels */
+#usernameValue, #emailValue, #createdAtValue {
+    -fx-font-size: 15px;
+    -fx-text-fill: #654321; /* dark brown */
+    -fx-font-weight: bold;
+    -fx-background-color: rgba(245, 245, 220, 0.9); /* beige with transparency */
+    -fx-background-radius: 6;
+    -fx-padding: 6 10 6 10;
+    -fx-border-color: rgba(139, 69, 19, 0.15);
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+}
+
+/* Button styling */
+.button {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 10 20 10 20;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 4, 0, 0, 2);
+    -fx-min-width: 120;
+}
+
+/* Edit Info button - brown theme */
+#editInfoBtn {
+    -fx-background-color: linear-gradient(to bottom, #8B5E3C, #7B4C2A); /* base brown */
+}
+
+#editInfoBtn:hover {
+    -fx-background-color: linear-gradient(to bottom, #A97461, #8B5E3C); /* lighter hover */
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.35), 6, 0, 0, 3);
+}
+
+#editInfoBtn:pressed {
+    -fx-background-color: linear-gradient(to bottom, #6B3F24, #5A2E18); /* darker pressed */
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.4), 4, 0, 0, 1);
+}
+
+/* Change Password button - darker brown theme */
+#changePasswordBtn {
+    -fx-background-color: linear-gradient(to bottom, #6B3F24, #5A2E18); /* darker brown */
+}
+
+#changePasswordBtn:hover {
+    -fx-background-color: linear-gradient(to bottom, #8B5E3C, #6B3F24); /* lighter hover */
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.35), 6, 0, 0, 3);
+}
+
+#changePasswordBtn:pressed {
+    -fx-background-color: linear-gradient(to bottom, #4A2B15, #3e1f0f); /* darkest pressed */
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.4), 4, 0, 0, 1);
+}
+
+/* Separator styling */
+.separator .line {
+    -fx-border-color: rgba(90, 46, 24, 0.4); /* darker brown with transparency */
+    -fx-border-width: 2 0 0 0;
+    -fx-border-style: solid;
+}
+
+/* ScrollPane styling */
+.scroll-pane {
+    -fx-background-color: rgba(245, 222, 179, 0.5); /* wheat with transparency */
+    -fx-border-color: #8b4513; /* saddle brown */
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-effect: innershadow(one-pass-box, rgba(0,0,0,0.1), 4, 0, 0, 0);
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .content {
+    -fx-background-color: transparent;
+}
+
+/* ScrollPane scrollbar styling */
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: rgba(245, 222, 179, 0.8); /* wheat */
+    -fx-background-radius: 6;
+}
+
+.scroll-pane .scroll-bar:vertical .track {
+    -fx-background-color: rgba(139, 69, 19, 0.2); /* saddle brown with transparency */
+    -fx-background-radius: 6;
+}
+
+.scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: #8b4513; /* saddle brown */
+    -fx-background-radius: 6;
+}
+
+.scroll-pane .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #a0522d; /* sienna */
+}
+
+/* Recipes box styling */
+#recipesBox {
+    -fx-background-color: transparent;
+}
+
+/* HBox alignment styling */
+.hbox {
+    -fx-alignment: center;
+}
+
+/* VBox styling for recipe section */
+.vbox[prefWidth="700"] {
+    -fx-background-color: rgba(245, 245, 220, 0.08); /* very light beige */
+    -fx-background-radius: 12;
+    -fx-border-color: rgba(90, 46, 24, 0.15);
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.08), 4, 0, 0, 2);
+}
+
+.recipe-edit-btn {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-text-fill: white;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 6 12 6 12;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 1);
+    -fx-min-width: 60;
+    -fx-background-color: linear-gradient(to bottom, #8B5E3C, #7B4C2A); /* brown gradient */
+}
+
+.recipe-edit-btn:hover {
+    -fx-background-color: linear-gradient(to bottom, #A97461, #8B5E3C);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 4, 0, 0, 2);
+}
+
+.recipe-edit-btn:pressed {
+    -fx-background-color: linear-gradient(to bottom, #6B3F24, #5A2E18);
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.3), 3, 0, 0, 1);
+}
+
+.recipe-delete-btn {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-text-fill: white;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 6 12 6 12;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 1);
+    -fx-min-width: 60;
+    -fx-background-color: linear-gradient(to bottom, #c0392b, #a93226); /* red gradient */
+}
+
+.recipe-delete-btn:hover {
+    -fx-background-color: linear-gradient(to bottom, #e74c3c, #c0392b);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 4, 0, 0, 2);
+}
+
+.recipe-delete-btn:pressed {
+    -fx-background-color: linear-gradient(to bottom, #922b21, #7b241c);
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.3), 3, 0, 0, 1);
+}

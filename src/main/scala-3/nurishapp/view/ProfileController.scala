@@ -114,6 +114,10 @@ class ProfileController {
           val editBtn = new Button("Edit")
           val delBtn = new Button("Remove")
 
+          // Add CSS classes to buttons
+          editBtn.getStyleClass.add("recipe-edit-btn")
+          delBtn.getStyleClass.add("recipe-delete-btn")
+
           editBtn.setOnAction(_ => openEditFoodDialog(f))
           delBtn.setOnAction(_ => {
             val confirm = new Alert(Alert.AlertType.CONFIRMATION)
