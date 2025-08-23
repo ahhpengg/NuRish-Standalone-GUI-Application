@@ -1,0 +1,140 @@
+
+.root {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+}
+
+/* MenuBar styling - Brown theme */
+.menu-bar {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-background-color: #654321; /* solid brown background */
+    -fx-border-color: #3e2723; /* dark brown */
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.25), 4, 0, 0, 2);
+}
+
+/* Alternative gradient approach for MenuBar */
+.menu-bar:focused {
+    -fx-background-color: linear-gradient(to bottom, #654321 0%, #3e2723 100%);
+}
+
+/* Menu styling */
+.menu {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.menu .label {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+
+.menu:hover .label {
+    -fx-text-fill: #f5deb3; /* wheat */
+}
+
+.menu:showing .label {
+    -fx-text-fill: #f5deb3; /* wheat */
+}
+
+/* Menu hover effects */
+.menu:hover {
+    -fx-background-color: rgba(169, 116, 97, 0.3); /* lighter brown with transparency */
+    -fx-background-radius: 4;
+}
+
+.menu:showing {
+    -fx-background-color: rgba(169, 116, 97, 0.5); /* lighter brown with more opacity */
+    -fx-background-radius: 4 4 0 0; /* rounded top corners only when menu is open */
+}
+
+/* MenuItem styling */
+.menu-item {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-color: #f5deb3; /* wheat background for all menu items */
+}
+
+.menu-item .label {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #654321 !important; /* dark brown - force visibility */
+    -fx-font-size: 13px;
+}
+
+.menu-item:hover {
+    -fx-background-color: #deb887 !important; /* burlywood */
+}
+
+.menu-item:hover .label {
+    -fx-text-fill: #3e2723 !important; /* very dark brown */
+}
+
+.menu-item:focused {
+    -fx-background-color: #d2b48c !important; /* tan */
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: #3e2723 !important; /* very dark brown */
+}
+
+/* Context menu (dropdown) styling */
+.context-menu {
+    -fx-background-color: #f5deb3; /* wheat */
+    -fx-border-color: #8b4513; /* saddle brown */
+    -fx-border-width: 2;
+    -fx-border-radius: 0 0 6 6; /* rounded bottom corners */
+    -fx-background-radius: 0 0 6 6;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 6, 0, 0, 3);
+    -fx-padding: 4;
+}
+
+/* Fix for dropdown menu visibility */
+.menu .context-menu {
+    -fx-background-color: #f5deb3; /* wheat */
+}
+
+/* Ensure menu items are always visible in dropdown */
+.context-menu .menu-item {
+    -fx-background-color: #f5deb3; /* wheat background */
+}
+
+.context-menu .menu-item .label {
+    -fx-text-fill: #654321 !important; /* dark brown - force visibility */
+    -fx-font-weight: bold;
+}
+
+/* Separator styling in menus */
+.separator {
+    -fx-border-color: rgba(139, 69, 19, 0.3); /* saddle brown with transparency */
+}
+
+/* Accelerator text styling (keyboard shortcuts) */
+.menu-item .accelerator-text {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-size: 11px;
+    -fx-text-fill: #8b4513; /* saddle brown */
+    -fx-font-style: italic;
+}
+
+.menu-item:hover .accelerator-text {
+    -fx-text-fill: #654321; /* dark brown */
+}
+
+.menu-item:focused .accelerator-text {
+    -fx-text-fill: #654321; /* dark brown */
+}
+
+.menu-bar .menu {
+    -fx-padding: 8 12 8 12; /* consistent padding for middle menus */
+}
+
+/* Smooth transitions */
+.menu, .menu-item {
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+}

@@ -21,7 +21,7 @@
     </top>
 
     <center>
-        <VBox spacing="10">
+        <VBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="230.0" spacing="10">
             <padding><Insets bottom="10" left="18" right="18" top="10" /></padding>
 
             <!-- Ingredients header -->

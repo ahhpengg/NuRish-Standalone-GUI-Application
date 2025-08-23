@@ -19,7 +19,6 @@ class EditFoodDialogController {
   @FXML private var proteinLabel: Label = _
   @FXML private var fatLabel: Label = _
   @FXML private var preferredBox: ComboBox[String] = _
-  @FXML private var messageLabel: Label = _
   @FXML private var saveBtn: Button = _
 
   private var stage: Stage = _

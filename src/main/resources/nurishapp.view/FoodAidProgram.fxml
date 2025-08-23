@@ -28,7 +28,7 @@
             <Label fx:id="programByOrgLabel" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #333;" text="(Program Name) by (Organization)" />
 
             <!-- Poster (click to preview/zoom) -->
-            <StackPane fx:id="imageContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#openPosterPreview" prefHeight="290.0" prefWidth="500.0">
+            <StackPane fx:id="imageContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#openPosterPreview" prefHeight="275.0" prefWidth="500.0">
                 <ImageView fx:id="posterImage" onMouseClicked="#openPosterPreview" pickOnBounds="true" preserveRatio="true" />
             </StackPane>
 
