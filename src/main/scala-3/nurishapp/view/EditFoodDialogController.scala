@@ -7,8 +7,6 @@ import nurishapp.model.Food
 import scalafx.scene.control.Alert
 import scalikejdbc.*
 
-import scala.util.Try
-
 class EditFoodDialogController {
 
   @FXML private var nameField: TextField = _

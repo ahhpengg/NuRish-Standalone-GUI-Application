@@ -11,7 +11,6 @@ import nurishapp.model.Food
 import scalikejdbc._
 import java.time.format.DateTimeFormatter
 import scala.jdk.CollectionConverters._
-import scala.util.Try
 
 class ProfileController {
 

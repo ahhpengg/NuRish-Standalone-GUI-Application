@@ -28,8 +28,7 @@ class HomePageController {
 
   def initStage(stage: Stage): Unit = {
     this.stage = stage
-
-    // Set up any stage-specific configurations here
+    
     stage.setTitle("NuRish - Home")
   }
 

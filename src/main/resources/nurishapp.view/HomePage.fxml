@@ -8,16 +8,12 @@
 <?import javafx.scene.layout.VBox?>
 
 <StackPane fx:id="homePage" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="820.0" stylesheets="@HomePage.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.HomePageController">
-
-    <!-- Video container -->
     <StackPane fx:id="videoPane" />
    <ImageView fx:id="logoImage" fitHeight="274.0" fitWidth="266.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
       <StackPane.margin>
          <Insets top="10.0" />
       </StackPane.margin>
    </ImageView>
-
-      <!-- VBox for main menu buttons -->
       <VBox alignment="CENTER" spacing="10">
           <children>
               <Button onAction="#handleMealPlanner" prefWidth="220.0" text="Personalized Meal Planner" />
@@ -30,15 +26,11 @@
          <Insets top="150.0" />
       </StackPane.margin>
       </VBox>
-
-      <!-- Bottom-left text -->
       <Label style="-fx-text-fill: white; -fx-font-size: 12px;" text="NuRish 1.0.0" StackPane.alignment="BOTTOM_LEFT">
       <StackPane.margin>
          <Insets bottom="5.0" left="5.0" />
       </StackPane.margin>
    </Label>
-
-      <!-- Bottom-right text -->
       <Label style="-fx-text-fill: white; -fx-font-size: 12px;" text="Copyright © 2025 by Peng Haw" StackPane.alignment="BOTTOM_RIGHT">
       <StackPane.margin>
          <Insets bottom="5.0" right="5.0" />

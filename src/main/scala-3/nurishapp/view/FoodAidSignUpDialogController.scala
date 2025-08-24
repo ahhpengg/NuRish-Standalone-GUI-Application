@@ -6,7 +6,7 @@ import javafx.stage.Stage
 import javafx.scene.control.Alert.AlertType
 
 import nurishapp.model.FoodAidApplication
-import nurishapp.util.{SessionManager, DateUtil}
+import nurishapp.util.{SessionManager, ValidationUtil}
 
 import java.time.LocalDate
 import scala.util.Try
@@ -36,7 +36,7 @@ class FoodAidSignUpDialogController {
     // must be signed in
     val userIdOpt = SessionManager.currentUserId
     if (userIdOpt.isEmpty) {
-      warn("Sign in required", "Please sign in before signing up.")
+      warn("Log in required", "Please log in before signing up.")
       return
     }
 
@@ -60,7 +60,7 @@ class FoodAidSignUpDialogController {
       warn("Invalid", "Date of Birth is required."); return
     }
 
-    val dob: LocalDate = parseDob(dobStr.get).getOrElse {
+    val dob: LocalDate = ValidationUtil.parseDob(dobStr.get).getOrElse {
       warn("Invalid", "Date of Birth must be like YYYY-MM-DD.")
       return
     }
@@ -77,7 +77,7 @@ class FoodAidSignUpDialogController {
       genderS = gender.get,
       dobD = dob,
       contactS = contact.get,
-      signUpAtD = LocalDate.now(), // or use DateUtil.today() if you have it
+      signUpAtD = LocalDate.now(), 
       byUserId = userIdOpt
     )
 
@@ -95,12 +95,6 @@ class FoodAidSignUpDialogController {
 
   // === Helpers ===
   private def optTrim(s: String): Option[String] = Option(s).map(_.trim).filter(_.nonEmpty)
-
-  private def parseDob(s: String): Option[LocalDate] = {
-    DateUtil.parseLocalDate(s).orElse {
-      Try(LocalDate.parse(s)).toOption
-    }
-  }
 
   private def isValidPhone(s: String): Boolean =
     s.matches("""\+?\d[ \d-]{6,}""")

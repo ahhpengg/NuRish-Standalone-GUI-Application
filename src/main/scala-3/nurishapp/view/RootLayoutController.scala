@@ -1,6 +1,5 @@
 package nurishapp.view
 
-import javafx.event.ActionEvent
 import javafx.fxml.{FXML, FXMLLoader}
 import javafx.scene.control.Alert.AlertType
 import javafx.scene.control.{Alert, ButtonType}
@@ -23,7 +22,7 @@ class RootLayoutController():
   def initStage(primaryStage: Stage): Unit =
     this.stage = primaryStage
 
-  // Use this whenever you need a Stage, avoids NPEs if initStage wasn't called yet
+  // Use this whenever need a Stage, avoids NPEs if initStage wasn't called yet
   private def sceneStage: Stage =
     if (stage != null) stage
     else rootLayout.getScene.getWindow.asInstanceOf[Stage]

@@ -82,7 +82,7 @@ class IngredientEditDialogController {
       }
     })
 
-    // Serving spinner (min 1.0)
+    // Serving spinner (min 0.5)
     servingSpinner.setValueFactory(
       new SpinnerValueFactory.DoubleSpinnerValueFactory(0.5, 100.0, 1.0, 0.5).asInstanceOf[SpinnerValueFactory[Double]]
     )

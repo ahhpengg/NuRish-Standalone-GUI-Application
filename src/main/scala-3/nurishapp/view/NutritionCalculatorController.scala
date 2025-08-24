@@ -1,14 +1,14 @@
 package nurishapp.view
 
 import javafx.fxml.{FXML, FXMLLoader}
-import javafx.scene.{Node, Parent, Scene}
+import javafx.scene.{Parent, Scene}
 import javafx.scene.control.*
-import javafx.scene.layout.{HBox, VBox}
+import javafx.scene.layout.VBox
 import javafx.scene.chart.PieChart
 import javafx.stage.{Modality, Stage}
 import javafx.collections.FXCollections
 import javafx.scene.image.Image
-import nurishapp.model.{Food, IngredientEntry}
+import nurishapp.model.IngredientEntry
 
 import scala.jdk.CollectionConverters.*
 

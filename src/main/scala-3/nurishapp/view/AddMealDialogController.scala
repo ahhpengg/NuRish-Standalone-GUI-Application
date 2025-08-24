@@ -7,8 +7,6 @@ import javafx.collections.FXCollections
 import nurishapp.util.SessionManager
 import scalikejdbc._
 
-import java.util.Locale
-import scala.util.Try
 import scala.jdk.CollectionConverters._
 
 class AddMealDialogController {
@@ -49,7 +47,7 @@ class AddMealDialogController {
     val usernameSuffix = SessionManager.currentUser.map(_.username.value).getOrElse("guest")
     val finalName = s"$rawName (by $usernameSuffix)"
 
-    // duplicate check under user view (system + your own)
+    // duplicate check under user view 
     if (existsFoodName(finalName)) {
       warn("Duplicate name", s""""$finalName" already exists. Please choose another name.""")
       return

@@ -43,9 +43,7 @@
                     <padding><Insets bottom="18" left="18" right="18" top="18" /></padding>
 
                     <HBox fx:id="resultsBox" spacing="16">
-                        <!-- Image on the left -->
                         <ImageView fx:id="foodImage" fitHeight="220" fitWidth="220" preserveRatio="true" />
-                        <!-- Info on the right -->
                         <GridPane fx:id="infoPane" hgap="10" vgap="6">
                             <columnConstraints>
                                 <ColumnConstraints halignment="RIGHT" minWidth="90" />

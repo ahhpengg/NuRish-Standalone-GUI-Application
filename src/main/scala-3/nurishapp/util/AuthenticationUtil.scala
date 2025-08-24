@@ -4,7 +4,7 @@ import nurishapp.model.User
 import java.time.LocalDate
 import java.util.Base64
 import java.security.MessageDigest
-import scala.util.{Try, Success, Failure}
+import scala.util.{Try, Failure}
 
 object AuthenticationUtil {
   def login(username: String, password: String): Try[Boolean] = {

@@ -116,7 +116,6 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 4, 0, 0, 2);
 }
 
-/* Add ingredient button - green theme */
 #addIngredientBtn {
     -fx-background-color: linear-gradient(to bottom, #27ae60, #229954);
 }
@@ -135,7 +134,6 @@
     -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.5), 4, 0, 0, 1);
 }
 
-/* Remove last button - orange theme */
 #removeLastBtn {
     -fx-background-color: linear-gradient(to bottom, #e67e22, #d35400);
 }
@@ -154,7 +152,6 @@
     -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.5), 4, 0, 0, 1);
 }
 
-/* Clear all button - red theme */
 #clearBtn {
     -fx-background-color: linear-gradient(to bottom, #e74c3c, #c0392b);
 }
@@ -173,7 +170,6 @@
     -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.5), 4, 0, 0, 1);
 }
 
-/* Calculate button - blue theme */
 #calculateBtn {
     -fx-background-color: linear-gradient(to bottom, #3498db, #2980b9);
 }
@@ -192,7 +188,6 @@
     -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.5), 4, 0, 0, 1);
 }
 
-/* Add to My Foods button - purple theme */
 #addMealBtn {
     -fx-background-color: linear-gradient(to bottom, #9b59b6, #8e44ad);
 }
@@ -211,7 +206,6 @@
     -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.5), 4, 0, 0, 1);
 }
 
-/* Calculate next one button - teal theme */
 #nextBtn {
     -fx-background-color: linear-gradient(to bottom, #1abc9c, #16a085);
 }

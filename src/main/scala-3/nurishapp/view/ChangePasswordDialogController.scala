@@ -9,7 +9,6 @@ import scalafx.scene.control.Alert
 
 import java.security.MessageDigest
 import java.util.Base64
-import scala.util.Try
 
 class ChangePasswordDialogController {
 

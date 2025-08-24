@@ -22,7 +22,6 @@
             <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Profile" />
               <ImageView fx:id="profileIcon" fitHeight="140" fitWidth="140" pickOnBounds="true" preserveRatio="true" />
 
-            <!-- User Info -->
             <GridPane alignment="CENTER" hgap="12" vgap="8">
                 <columnConstraints>
                     <ColumnConstraints minWidth="120" />
@@ -51,7 +50,6 @@
 
             <Separator prefWidth="700" />
 
-            <!-- My Recipes -->
             <VBox alignment="TOP_CENTER" prefWidth="700" spacing="8">
                 <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="My Recipes" />
                 <ScrollPane fitToWidth="true" prefViewportHeight="240">

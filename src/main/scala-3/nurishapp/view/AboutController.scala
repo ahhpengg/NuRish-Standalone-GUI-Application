@@ -1,10 +1,9 @@
 package nurishapp.view
 
-import javafx.fxml.{FXML, FXMLLoader}
+import javafx.fxml.FXML
 import javafx.scene.control.Button
 import javafx.scene.image.{Image, ImageView}
-import javafx.scene.layout.{BorderPane, StackPane}
-import javafx.scene.Parent
+import javafx.scene.layout.StackPane
 import javafx.stage.Stage
 
 class AboutController {

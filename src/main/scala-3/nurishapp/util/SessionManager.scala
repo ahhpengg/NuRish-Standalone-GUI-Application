@@ -1,7 +1,7 @@
 package nurishapp.util
 
 import nurishapp.model.User
-import scala.util.{Try, Success, Failure}
+import scala.util.{Try, Failure}
 
 object SessionManager {
   private var _currentUser: Option[User] = None

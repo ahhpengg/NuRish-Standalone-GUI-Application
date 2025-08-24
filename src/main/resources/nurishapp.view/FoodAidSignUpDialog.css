@@ -73,7 +73,7 @@
     -fx-font-style: italic;
 }
 
-/* ComboBox styling - Brown theme */
+/* ComboBox styling */
 .combo-box {
     -fx-font-family: "Comic Sans MS", cursive, sans-serif;
     -fx-font-weight: bold;

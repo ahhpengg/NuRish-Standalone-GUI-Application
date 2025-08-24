@@ -38,8 +38,7 @@ class FoodSearchController {
   private var rootController: RootLayoutController = _
   private var allFoodNames: List[String] = Nil
   private val noResultText = "Sorry, cannot find the food you are searching for"
-
-  // Call this from your RootLayout after loading the FXML
+  
   def refreshForCurrentUser(): Unit = {
     loadCategories()
     refreshFoodNames()
@@ -52,8 +51,7 @@ class FoodSearchController {
   def initStage(stage: Stage): Unit = {
     this.stage = stage
     refreshForCurrentUser()
-
-    // Set up any stage-specific configurations here
+    
     stage.setTitle("NuRish - Food Search")
   }
 
@@ -218,13 +216,13 @@ class FoodSearchController {
             setText(null)
           } else {
             setText(item)
-            setDisable(true) // 👈 disables clicking
+            setDisable(true) // disables clicking
             setStyle("-fx-text-fill: grey; -fx-font-style: italic;")
           }
         }
       })
 
-      foodBox.getSelectionModel.clearSelection() // 👈 prevent auto-select
+      foodBox.getSelectionModel.clearSelection() // prevent auto-select
     } else {
       foodBox.setItems(FXCollections.observableArrayList(filtered.asJava))
       foodBox.setCellFactory(_ => new ListCell[String] {

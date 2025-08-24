@@ -7,8 +7,6 @@ import nurishapp.util.{AuthenticationUtil, DateUtil, SessionManager, ValidationU
 import nurishapp.model.User
 import scalafx.scene.control.Alert
 
-import scala.util.{Failure, Success, Try}
-
 class EditInfoDialogController {
 
   @FXML private var usernameField: TextField = _

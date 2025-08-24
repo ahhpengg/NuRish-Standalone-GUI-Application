@@ -1,6 +1,5 @@
 package nurishapp.model
 
-import nurishapp.model.Food
 import javafx.scene.layout.HBox
 import javafx.scene.control.Label
 

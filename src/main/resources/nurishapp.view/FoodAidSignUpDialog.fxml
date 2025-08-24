@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="programSignupPane" prefHeight="360" prefWidth="520" stylesheets="@FoodAidSignUpDialog.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.FoodAidSignUpDialogController">
+<BorderPane fx:id="programSignupPane" prefHeight="360" prefWidth="525.0" stylesheets="@FoodAidSignUpDialog.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.FoodAidSignUpDialogController">
 
     <center>
         <VBox spacing="12">

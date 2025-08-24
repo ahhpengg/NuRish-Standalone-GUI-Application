@@ -17,7 +17,7 @@ case class FoodAidApplication(
                                byUserId: Option[Int]
                              ) extends Database {
 
-  // ScalaFX properties (optional but mirroring your User pattern)
+  // ScalaFX properties 
   val fullNameIc = new StringProperty(this, "fullNameIc", fullNameIcS)
   val icNumber   = new StringProperty(this, "icNumber",   icNumberS)
   val gender     = new StringProperty(this, "gender",     genderS)
@@ -47,8 +47,7 @@ case class FoodAidApplication(
             (${fullNameIc.value}, ${icNumber.value}, ${gender.value}, ${dob.value},
              ${contact.value}, ${signUpAt.value}, ${byUserId})
         """.update.apply()
-
-        // fetch the row we just created (IC is unique per sign-up day could be non-unique; here we fetch latest by user)
+        
         FoodAidApplication.findLatestByUser(byUserId).getOrElse(
           throw new RuntimeException("Failed to create application")
         )
