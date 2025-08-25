@@ -58,24 +58,64 @@
     -fx-text-fill: #0b2b26;
 }
 
-/* ComboBox styling */
 .combo-box {
     -fx-font-family: "Comic Sans MS", cursive, sans-serif;
     -fx-font-weight: bold;
-    -fx-background-color: #ffffff;
-    -fx-border-color: #bdc3c7;
-    -fx-border-radius: 5;
-    -fx-background-radius: 5;
+    -fx-background-color: #f5deb3; /* wheat */
+    -fx-border-color: #8b4513; /* saddle brown */
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.15), 2, 0, 0, 1);
+}
+
+.combo-box:focused {
+    -fx-border-color: #a0522d; /* sienna */
+    -fx-effect: dropshadow(one-pass-box, rgba(160, 82, 45, 0.4), 4, 0, 0, 1);
 }
 
 .combo-box .text-input {
     -fx-font-family: "Comic Sans MS", cursive, sans-serif;
     -fx-font-weight: bold;
+    -fx-text-fill: #654321; /* dark brown */
 }
 
 .combo-box .arrow-button {
-    -fx-background-color: #ecf0f1;
-    -fx-background-radius: 0 5 5 0;
+    -fx-background-color: #8b4513; /* saddle brown */
+    -fx-background-radius: 0 6 6 0;
+}
+
+.combo-box .arrow-button .arrow {
+    -fx-background-color: #f5deb3; /* wheat */
+}
+
+.combo-box .arrow-button:hover {
+    -fx-background-color: #a0522d; /* sienna */
+}
+
+/* ComboBox dropdown styling */
+.combo-box-popup .list-view {
+    -fx-background-color: #f5deb3; /* wheat */
+    -fx-border-color: #8b4513; /* saddle brown */
+    -fx-border-width: 2;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #654321; /* dark brown */
+    -fx-background-color: transparent;
+}
+
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: rgba(160, 82, 45, 0.2); /* sienna with transparency */
+}
+
+.combo-box-popup .list-view .list-cell:selected {
+    -fx-background-color: #deb887; /* burlywood */
+    -fx-text-fill: #3e2723; /* very dark brown */
 }
 
 /* Button styling with hover and click effects */

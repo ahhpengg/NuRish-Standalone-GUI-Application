@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="ingredientEditPane" prefHeight="360" prefWidth="520" stylesheets="@IngredientEditDialog.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.IngredientEditDialogController">
+<BorderPane fx:id="ingredientEditPane" prefHeight="360" prefWidth="520" stylesheets="@AddIngredientDialog.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurishapp.view.AddIngredientDialogController">
 
     <center>
         <VBox spacing="10">

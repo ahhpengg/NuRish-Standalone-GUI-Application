@@ -9,7 +9,6 @@ import nurishapp.model.FoodAidApplication
 import nurishapp.util.{SessionManager, ValidationUtil}
 
 import java.time.LocalDate
-import scala.util.Try
 
 class FoodAidSignUpDialogController {
 

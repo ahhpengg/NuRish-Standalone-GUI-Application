@@ -50,7 +50,7 @@ class NutritionCalculatorController {
   // ====== UI Handlers ======
   @FXML private def handleAddIngredient(): Unit = {
     val (dlgRoot, ctrl, dlgStage) =
-      openDialog[IngredientEditDialogController]("/nurishapp.view/IngredientEditDialog.fxml", "Add Ingredient")
+      openDialog[AddIngredientDialogController]("/nurishapp.view/AddIngredientDialog.fxml", "Add Ingredient")
     dlgStage.initOwner(root.getScene.getWindow)
     dlgStage.initModality(Modality.WINDOW_MODAL)
     dlgStage.setResizable(false)
@@ -112,7 +112,7 @@ class NutritionCalculatorController {
       return
     }
     val (dlgRoot, ctrl, dlgStage) =
-      openDialog[AddMealDialogController]("/nurishapp.view/AddMealDialog.fxml", "Save Meal")
+      openDialog[SaveMealDialogController]("/nurishapp.view/SaveMealDialog.fxml", "Save Meal")
     dlgStage.initOwner(root.getScene.getWindow)
     dlgStage.initModality(Modality.WINDOW_MODAL)
     dlgStage.setResizable(false)

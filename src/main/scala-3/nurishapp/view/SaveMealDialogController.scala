@@ -9,7 +9,7 @@ import scalikejdbc._
 
 import scala.jdk.CollectionConverters._
 
-class AddMealDialogController {
+class SaveMealDialogController {
 
   // ====== FXML ======
   @FXML private var nameField: TextField = _

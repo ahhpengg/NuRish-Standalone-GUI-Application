@@ -11,7 +11,7 @@ import scalikejdbc.*
 import java.util.Locale
 import scala.jdk.CollectionConverters.*
 
-class IngredientEditDialogController {
+class AddIngredientDialogController {
 
   // ====== FXML ======
   @FXML private var categoryBox: ComboBox[String] = _
