@@ -72,22 +72,6 @@ Database tables include:
 
 ---
 
-## 📂 Project Structure
-
-src/main/
-├── scala/
-│ ├── nurishapp/
-│ │ ├── model/
-│ │ ├── controller/
-│ │ ├── util/
-│ │ └── MainApp.scala
-└── resources/
-├── fxml/
-├── css/
-└── images/
-
----
-
 ## 🎥 Demo Video
 Watch the system demonstration:  
 https://youtu.be/BMYnYf-_zGA
